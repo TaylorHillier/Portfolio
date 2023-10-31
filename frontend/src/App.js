@@ -1,7 +1,13 @@
+import React from "react";
+import ProjectData from "./Components/Projects";
+
 function App() {
+  const wpApiUrl = 'http://localhost:8888/portfolio/wp-json/wp/v2/';
+
+
   return (
-    <div className="App">
-     <h1 className='font-bold m-24'>Hello</h1>
+    <div>
+      <ProjectData apiUrl={wpApiUrl}/>
     </div>
   );
 }
