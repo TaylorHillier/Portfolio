@@ -17,14 +17,14 @@ function ProjectData({apiUrl}) {
     }, [apiUrl]);
 
     return(
-        <div>
-            <h1>My Projects</h1>
-            <ul>
+        <div className='projects' id='projects'>
+            <ul className='project-list m-4'>
                 {projects.map((project) => (
-                    <li key={project.id}>
+                    <li key={project.id} className='py-8'>
+                        <h2>{project.title.rendered}</h2>
                         <img src={project._embedded['wp:featuredmedia'][0].source_url}/>
-                        <p className='m-8'>{project.acf.project_summary}</p>
-                        <p className='m-8'>{project.acf.project_skills}</p>
+                        <p className=''>{project.acf.project_summary}</p>
+                        <p className=''>{project.acf.project_skills}</p>
                     </li>
                 ))}
             </ul>
