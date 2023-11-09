@@ -8,7 +8,7 @@ function WelcomePage({apiUrl}) {
 
         fetch(`${apiUrl}pages/21`, {
             headers:{
-                Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNjk4NzA1NDI1LCJuYmYiOjE2OTg3MDU0MjUsImV4cCI6MTY5OTMxMDIyNSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.l1XebrZSpe3Dhmucipq1NI94AIzjFyTu1LVAXNyXUDU",
+                Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNjk5NTY3MzU5LCJuYmYiOjE2OTk1NjczNTksImV4cCI6MTcwMDE3MjE1OSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.o-OPTTyhRY3IMzIq0JJvY6lDd49WmaRAiv0HtRW1DbU",
             },
         })
             .then((response) => response.json())
@@ -30,13 +30,15 @@ function WelcomePage({apiUrl}) {
             ) : (
             <div className='p-4 h-screen flex'> 
                 <div className='my-60'>
-                    <p>{homeFields.acf.text_area_1}</p>
-                    <h1 className='text-lg font-bold'>{homeFields.acf.keyword_1}</h1>
-                    <p>{homeFields.acf.text_area_2}</p>
-                    <h1 className='text-lg font-bold'>{homeFields.acf.keyword_2}</h1>
-                    <p>{homeFields.acf.text_area_3}</p>
-                    <button className='mr-4 border-solid border-black border-2 p-2'>{homeFields.acf.first_cta}</button>
-                    <button className='border-solid border-black border-2 p-2'>{homeFields.acf.second_cta}</button>
+                    <p className='py-2'>{homeFields.acf.text_area_1}</p>
+                    <h1 className='text-3xl font-bold'>{homeFields.acf.keyword_1}</h1>
+                    <p className='pt-2'>{homeFields.acf.text_area_2}</p>
+                    <h1 className='text-3xl font-bold'>{homeFields.acf.keyword_2}</h1>
+                    <p className='py-4'>{homeFields.acf.text_area_3}</p>
+                    <div className='buttons flex flex-col' id='cta-buttons'>
+                        <button className='my-2 border-solid border-black border-2 p-2'><a href='#projects'>{homeFields.acf.first_cta}</a></button>
+                        <button className='my-2 border-solid border-black border-2 p-2'><a href='#about'>{homeFields.acf.second_cta}</a></button>
+                    </div>
                 </div> 
             </div>
             )}
