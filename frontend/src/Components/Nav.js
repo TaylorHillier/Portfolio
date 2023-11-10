@@ -9,8 +9,8 @@ function Nav() {
     }
 
     return (
-    <div className='flex flex-col-reverse md:flex-row'>
-        <div className='md:hidden grid grid-cols-3 justify-items-center items-center m-2 bg-white rounded-full border-black border-2'>
+    <div className='flex flex-col-reverse md:flex-row text-black'>
+        <div className='md:hidden grid grid-cols-3 justify-items-center items-center m-2 rounded-full border-black border-2'>
             <div className='col-start-2 col-end-3'>
                 <p>Taylor Hillier</p>
             </div>

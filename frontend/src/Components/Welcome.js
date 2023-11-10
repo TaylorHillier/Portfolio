@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import ParticleBg from './ParticleBg';
 
 function WelcomePage({apiUrl}) {
     const [homeFields, setHomeFields] = useState([]);
@@ -22,14 +23,14 @@ function WelcomePage({apiUrl}) {
             });
     }, [apiUrl]);
 
-    console.log(homeFields);
     return(
         <div  className='welcome' id='welcome'>
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
-            <div className='p-4 h-screen flex'> 
-                <div className='my-60'>
+            <div className='relative m-4 my-60'> 
+                <div className=''>
+                <ParticleBg/>
                     <p className='py-2'>{homeFields.acf.text_area_1}</p>
                     <h1 className='text-3xl font-bold'>{homeFields.acf.keyword_1}</h1>
                     <p className='pt-2'>{homeFields.acf.text_area_2}</p>
@@ -42,6 +43,7 @@ function WelcomePage({apiUrl}) {
                 </div> 
             </div>
             )}
+            
         </div>
     )
 }

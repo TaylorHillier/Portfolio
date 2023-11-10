@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
 function AboutPage({apiUrl}) {
     const [aboutFields, setAboutFields] = useState([]);
-
+ 
     useEffect(() => {
 
         fetch(`${apiUrl}pages/38`, {
@@ -16,17 +17,32 @@ function AboutPage({apiUrl}) {
 
     }, [apiUrl]);
 
+    const keywords = [
+        aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_1,
+        aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_2,
+        aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_3,
+    ];
+
     return(
+        <div className='bg-white text-black'>
         <div  className='about' id="about"> 
-            {aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_1 && (
-                <p>{aboutFields.acf.about_keyword_group.about_keyword_1}</p>
-            )}
-            {aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_2 && (
-                <p>{aboutFields.acf.about_keyword_group.about_keyword_2}</p>
-            )}
-            {aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_3 && (
-                <p>{aboutFields.acf.about_keyword_group.about_keyword_3}</p>
-            )}  
+            <h1 className='border-solid border-2 border-black max-w-fit p-1 rounded'>About</h1>
+            <TypeAnimation 
+            sequence={[
+                keywords[0],
+                5000,
+                keywords[1],
+                5000,
+                keywords[2],
+                5000,
+            ]}
+                speed={50}
+                repeat={Infinity}
+                style={{fontSize:'2em'}}
+            
+            />
+            <p>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
+        </div>
         </div>
     )
 }

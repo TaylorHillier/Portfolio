@@ -1,7 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-html {
+@tailwind base;
+@layer base {
+  html {
     scroll-behavior: smooth;
-  }
+    @apply text-white;
+}
+}
+
+
+#tsparticles{
+  position : absolute;
+    width:100%;
+    max-height: 100%;
+    z-index:-1;
+}
+
+canvas{
+  max-height: 54rem;
+  background-size: cover;
+}

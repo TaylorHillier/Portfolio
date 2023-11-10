@@ -17,10 +17,11 @@ function ProjectData({apiUrl}) {
     }, [apiUrl]);
 
     return(
-        <div className='projects' id='projects'>
-            <ul className='project-list m-4'>
+        <div className='projects py-8 bg-white text-black' id='projects'>
+            <h1 className='border-solid border-2 border-black max-w-fit p-1 rounded m-4'>Projects</h1>
+            <ul className='project-list'>
                 {projects.map((project) => (
-                    <li key={project.id} className='py-8'>
+                    <li key={project.id} className=''>
                         <h2>{project.title.rendered}</h2>
                         <img src={project._embedded['wp:featuredmedia'][0].source_url}/>
                         <p className=''>{project.acf.project_skills}</p>
