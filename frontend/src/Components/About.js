@@ -24,25 +24,25 @@ function AboutPage({apiUrl}) {
     ];
 
     return(
-        <div className='bg-white text-black'>
-        <div  className='about' id="about"> 
-            <h1 className='border-solid border-2 border-black max-w-fit p-1 rounded'>About</h1>
-            <TypeAnimation 
-            sequence={[
-                keywords[0],
-                5000,
-                keywords[1],
-                5000,
-                keywords[2],
-                5000,
-            ]}
-                speed={50}
-                repeat={Infinity}
-                style={{fontSize:'2em'}}
-            
-            />
-            <p>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
-        </div>
+        <div className='bg-white text-black min-h-screen'>
+            <div  className='about' id="about"> 
+                <h1 className='border-solid border-2 border-black max-w-fit p-1 rounded m-4'>About</h1>
+                <TypeAnimation 
+                sequence={[
+                    keywords[0],
+                    5000,
+                    keywords[1],
+                    5000,
+                    keywords[2],
+                    5000,
+                ]}
+                    speed={50}
+                    repeat={Infinity}
+                    style={{fontSize:'2em'}}
+                
+                />
+                <p>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
+            </div>
         </div>
     )
 }

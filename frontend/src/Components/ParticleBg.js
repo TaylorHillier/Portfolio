@@ -1,7 +1,7 @@
 import React from "react"; 
 import Particles from "react-tsparticles"; 
 import { loadFull } from "tsparticles"; 
-const App = () => { 
+const ParticleBg = () => { 
   const particlesInit = async (main) => { 
     console.log(main); 
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets 
@@ -13,7 +13,7 @@ const App = () => {
     console.log(container); 
   }; 
   return ( 
-    <div className="App"> 
+    <div className="particleBg"> 
       <Particles 
         id="tsparticles" 
         init={particlesInit} 
@@ -22,6 +22,12 @@ const App = () => {
           background: { 
             color: "rgb(10,10,25)", 
           }, 
+          style: {
+            position: "absolute",
+            height: "100vh",
+            "z-index": -1,
+            
+          },
           fpsLimit: 60, 
           particles: { 
             shape: { 
@@ -70,4 +76,4 @@ const App = () => {
     </div> 
   ); 
 }  
-export default App; 
+export default ParticleBg; 

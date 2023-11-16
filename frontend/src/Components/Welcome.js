@@ -4,6 +4,7 @@ import ParticleBg from './ParticleBg';
 function WelcomePage({apiUrl}) {
     const [homeFields, setHomeFields] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [scrollPosition, setScrollPosition] = useState(0);
 
     useEffect(() => {
 
@@ -23,22 +24,37 @@ function WelcomePage({apiUrl}) {
             });
     }, [apiUrl]);
 
+    useEffect(() => {
+        const handleScroll = () => {
+          setScrollPosition(window.scrollY);
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+    
+
     return(
-        <div  className='welcome' id='welcome'>
+        <div  className='welcome m-auto h-screen' id='welcome'>
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
-            <div className='relative m-4 my-60'> 
-                <div className=''>
-                <ParticleBg/>
-                    <p className='py-2'>{homeFields.acf.text_area_1}</p>
-                    <h1 className='text-3xl font-bold'>{homeFields.acf.keyword_1}</h1>
-                    <p className='pt-2'>{homeFields.acf.text_area_2}</p>
-                    <h1 className='text-3xl font-bold'>{homeFields.acf.keyword_2}</h1>
-                    <p className='py-4'>{homeFields.acf.text_area_3}</p>
-                    <div className='buttons flex flex-col' id='cta-buttons'>
-                        <button className='my-2 border-solid border-black border-2 p-2'><a href='#projects'>{homeFields.acf.first_cta}</a></button>
-                        <button className='my-2 border-solid border-black border-2 p-2'><a href='#about'>{homeFields.acf.second_cta}</a></button>
+            <div className={`parallax`} > 
+            <ParticleBg/>
+                <div className='welcomeContent max-w-lg m-4'>
+                    <div className='welcome-content-container py-60'>
+                        <p className='py-2'>{homeFields.acf.text_area_1}</p>
+                        <h1 className='text-3xl font-bold'>{homeFields.acf.keyword_1}</h1>
+                        <p className='pt-2'>{homeFields.acf.text_area_2}</p>
+                        <h1 className='text-3xl font-bold'>{homeFields.acf.keyword_2}</h1>
+                        <p className='py-4'>{homeFields.acf.text_area_3}</p>
+                        <div className='buttons flex flex-col' id='cta-buttons'>
+                            <button className='my-2 border-solid border-black border-2 p-2'><a href='#projects'>{homeFields.acf.first_cta}</a></button>
+                            <button className='my-2 border-solid border-black border-2 p-2'><a href='#about'>{homeFields.acf.second_cta}</a></button>
+                        </div>
                     </div>
                 </div> 
             </div>
