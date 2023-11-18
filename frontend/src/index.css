@@ -5,7 +5,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    @apply text-white;
 }
 }
 
@@ -42,5 +41,6 @@ canvas{
 }
 
 .tab.active{
-
+    border: 1px solid #ccc;
+    background-color: #2A3D3B;
 }

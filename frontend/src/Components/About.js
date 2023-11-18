@@ -26,7 +26,7 @@ function AboutPage({apiUrl}) {
     return(
         <div className='bg-[#151f1e] text-white min-h-screen'>
             <img src={aboutFields.acf && aboutFields.acf.portrait}/>
-            <div  className='about py-4' id="about"> 
+            <div  className='about p-4' id="about"> 
                 <h1 className='border-solid border-2 border-black max-w-fit p-1 rounded my-4'>About</h1>
                 <TypeAnimation 
                 sequence={[
@@ -43,7 +43,7 @@ function AboutPage({apiUrl}) {
                 
                 />
                 <p>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
-                <div className='aboutMeSkills'>
+                <div className='aboutMeSkills py-4'>
                     <h3>Some skills I have developed:</h3>
                     <ul className='skills'>
                         {aboutFields.acf &&
