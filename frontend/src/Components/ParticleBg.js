@@ -26,7 +26,6 @@ const ParticleBg = () => {
             position: "absolute",
             height: "100vh",
             "z-index": -1,
-            
           },
           fpsLimit: 60, 
           particles: { 

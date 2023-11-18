@@ -18,3 +18,29 @@ canvas{
   background-size: cover;
 }
 
+.tabs {
+  display: flex;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.tab-content {
+  display: none;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+  margin-top: -1px; /* Align with tab border */
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab.active{
+
+}

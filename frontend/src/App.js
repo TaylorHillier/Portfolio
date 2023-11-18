@@ -17,9 +17,9 @@ function App() {
   }, []);
 
   return (
-    <div className="site-wrapper m-auto flex flex-col min-h-screen">
+    <div className="site-wrapper m-auto flex flex-col ">
        {contentRendered && (
-        <div className="navbar z-50 fixed bottom-0 w-full md:top-0">
+        <div className="navbar z-50 fixed bottom-0 w-full md:top-0 md:bottom-full">
           <Nav />
         </div>
       )}
