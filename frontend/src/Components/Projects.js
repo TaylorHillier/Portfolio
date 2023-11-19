@@ -92,8 +92,8 @@ function ProjectData({ apiUrl }) {
 
   return (
     <div className='projects bg-[#151f1e] text-white mb-20 p-4' id='projects'>
-      <h1 className='border-solid border-2 border-black max-w-fit p-1 rounded m-auto'>Projects</h1>
-      <h2 className='m-auto text-center text-lg text font-bold'>
+      <h1 className='border-solid border border-white max-w-fit p-1 rounded m-auto projectsHeader'>Projects</h1>
+      <h2 className='m-auto text-center text-lg text font-bold my-4'>
         Here's some of the work I've done <b></b>(so far).
       </h2>
       <ul className='project-list '>

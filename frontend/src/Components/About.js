@@ -23,29 +23,28 @@ function AboutPage({apiUrl}) {
         aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_3,
     ];
 
+    const [currentKeywordIndex, setCurrentKeywordIndex] = useState(0);
+
+    useEffect(() => {
+
+        const intervalId = setInterval(() => {
+            setCurrentKeywordIndex((prevIndex) => (prevIndex + 1) % keywords.length);
+        }, 3000);
+
+        return () => clearInterval(intervalId);
+    }, [keywords]);
     return(
-        <div className='bg-[#151f1e] text-white min-h-screen'>
+        <div className='bg-gradient-to-r from-[#151f1e] via-[#151d1f] to-[#191b25] h-screen text-whit min-h-screen'>
             <img src={aboutFields.acf && aboutFields.acf.portrait}/>
             <div  className='about p-4' id="about"> 
-                <h1 className='border-solid border-2 border-black max-w-fit p-1 rounded my-4'>About</h1>
-                <TypeAnimation 
-                sequence={[
-                    keywords[0],
-                    5000,
-                    keywords[1],
-                    5000,
-                    keywords[2],
-                    5000,
-                ]}
-                    speed={50}
-                    repeat={Infinity}
-                    style={{fontSize:'2em'}}
-                
-                />
-                <p>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
+                <h1 className='border-solid border border-white max-w-fit p-1 rounded my-4 aboutHeader'>About</h1>
+                <h2 className='text-lg font-bold font-"Open Sans"'>
+                    <span>{keywords[currentKeywordIndex]}</span>
+                </h2>
+                <p className='mb-12'>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
                 <div className='aboutMeSkills py-4'>
                     <h3>Some skills I have developed:</h3>
-                    <ul className='skills'>
+                    <ul className='skills flex'>
                         {aboutFields.acf &&
                             aboutFields.acf.skill_repeater &&
                             aboutFields.acf.skill_repeater.map((skill, index) => (
