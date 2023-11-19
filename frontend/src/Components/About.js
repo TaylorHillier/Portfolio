@@ -29,7 +29,7 @@ function AboutPage({apiUrl}) {
 
         const intervalId = setInterval(() => {
             setCurrentKeywordIndex((prevIndex) => (prevIndex + 1) % keywords.length);
-        }, 8000);
+        }, 6000);
 
         return () => clearInterval(intervalId);
     }, [keywords]);
@@ -39,10 +39,12 @@ function AboutPage({apiUrl}) {
             <img src={aboutFields.acf && aboutFields.acf.portrait}/>
             <div  className='about p-4' id="about"> 
                 <h1 className='border-solid border border-white max-w-fit p-1 rounded my-4 aboutHeader'>About</h1>
-                <h2 >
-                    <TextTransition springConfig={presets.wobbly}>{keywords[currentKeywordIndex]}</TextTransition>
-                </h2>
-                <p className='mb-12'>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
+                <div id='aboutKeywordAnimation'>
+                    <TextTransition className='text-5xl' springConfig={presets.wobbly}>{keywords[currentKeywordIndex]}</TextTransition>
+                </div>
+                <div className='aboutParagraph my-4'>
+                    <p className='mb-12'>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
+                </div>
                 <div className='aboutMeSkills py-4'>
                     <h3>Some skills I have developed:</h3>
                     <ul className='skills flex'>

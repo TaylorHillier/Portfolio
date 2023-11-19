@@ -53,7 +53,7 @@ function ProjectData({ apiUrl }) {
       <div>
         <div className='tabs'>
           <div
-            className={`tab ${activeTab === 'summary' ? 'active' : ''}`}
+            className={`tab ${activeTab === 'summary' ? 'active' : ''} `}
             onClick={() => setActiveTab('summary')}
           >
             <button>Summary</button>
@@ -71,18 +71,18 @@ function ProjectData({ apiUrl }) {
         <div>
           <div className={`tab-content ${activeTab === 'summary' ? 'active' : ''}`}>
           {showFullSummary ? (
-              <div>
-              <PlainTextToHTML plainText={project.acf.project_summary} />
-              <button onClick={toggleSummary} className='flex m-auto border-solid border-2 p-2 mt-4 rounded'>Read Less</button>
+              <div className=' backdrop-brightness-90 p-8 shadow-lg shadow-slate-400'>
+                <PlainTextToHTML plainText={project.acf.project_summary} />
+                <button onClick={toggleSummary} className='flex m-auto border-solid border-2 p-2 mt-4 rounded'>Read Less</button>
               </div>
             ) : (
-              <div>
-                <PlainTextToHTML plainText={project.acf.project_summary.substring(0, 250)} />
+              <div className='backdrop-brightness-90 p-4 shadow-lg shadow-slate-400'>
+                  <PlainTextToHTML plainText={project.acf.project_summary.substring(0, 250)} />
                 <button onClick={toggleSummary} className='flex m-auto border-solid border-2 p-2 mt-4 rounded'>Read More</button>
               </div>
             )}
           </div>
-          <p className={`tab-content ${activeTab === 'skills' ? 'active' : ''}`}>
+          <p className={`tab-content ${activeTab === 'skills' ? 'active' : ''} p-8 backdrop-brightness-90 shadow-lg shadow-slate-400`}>
             {project.acf.project_skills}
           </p>
         </div>
@@ -91,7 +91,7 @@ function ProjectData({ apiUrl }) {
   };
 
   return (
-    <div className='projects bg-[#151f1e] text-white mb-20 p-4' id='projects'>
+    <div className='projects bg-gradient-to-r from-[#151f1e] via-[#151d1f] to-[#191b25] text-white mb-20 p-4' id='projects'>
       <h1 className='border-solid border border-white max-w-fit p-1 rounded m-auto projectsHeader'>Projects</h1>
       <h2 className='m-auto text-center text-lg text font-bold my-4'>
         Here's some of the work I've done <b></b>(so far).
