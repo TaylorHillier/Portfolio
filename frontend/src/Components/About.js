@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import { TypeAnimation } from 'react-type-animation';
+import TextTransition, {presets} from 'react-text-transition';
 
 function AboutPage({apiUrl}) {
     const [aboutFields, setAboutFields] = useState([]);
@@ -29,17 +29,18 @@ function AboutPage({apiUrl}) {
 
         const intervalId = setInterval(() => {
             setCurrentKeywordIndex((prevIndex) => (prevIndex + 1) % keywords.length);
-        }, 3000);
+        }, 8000);
 
         return () => clearInterval(intervalId);
     }, [keywords]);
+
     return(
         <div className='bg-gradient-to-r from-[#151f1e] via-[#151d1f] to-[#191b25] h-screen text-whit min-h-screen'>
             <img src={aboutFields.acf && aboutFields.acf.portrait}/>
             <div  className='about p-4' id="about"> 
                 <h1 className='border-solid border border-white max-w-fit p-1 rounded my-4 aboutHeader'>About</h1>
-                <h2 className='text-lg font-bold font-"Open Sans"'>
-                    <span>{keywords[currentKeywordIndex]}</span>
+                <h2 >
+                    <TextTransition springConfig={presets.wobbly}>{keywords[currentKeywordIndex]}</TextTransition>
                 </h2>
                 <p className='mb-12'>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
                 <div className='aboutMeSkills py-4'>
