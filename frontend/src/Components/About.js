@@ -29,24 +29,37 @@ function AboutPage({apiUrl}) {
 
         const intervalId = setInterval(() => {
             setCurrentKeywordIndex((prevIndex) => (prevIndex + 1) % keywords.length);
-        }, 6000);
+        }, 5000);
 
         return () => clearInterval(intervalId);
     }, [keywords]);
 
+    const PlainTextToHTML = ({ plainText }) => {
+        // Check if plainText is an object with __html property
+        if (typeof plainText === 'object' && plainText.__html) {
+          return <div dangerouslySetInnerHTML={plainText} id="about-content" />;
+        }
+  
+        // Convert plain text to HTML
+        const htmlContent = `<p>${plainText}</p>`;
+  
+        return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+      };
+
+
     return(
-        <div className='bg-gradient-to-r from-[#151f1e] via-[#151d1f] to-[#191b25] h-screen text-whit min-h-screen'>
+        <div className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#191b25] h-screen text-whit min-h-screen'>
             <img src={aboutFields.acf && aboutFields.acf.portrait}/>
             <div  className='about p-4' id="about"> 
-                <h1 className='border-solid border border-white max-w-fit p-1 rounded my-4 aboutHeader'>About</h1>
-                <div id='aboutKeywordAnimation'>
-                    <TextTransition className='text-5xl' springConfig={presets.wobbly}>{keywords[currentKeywordIndex]}</TextTransition>
+                <h1 className='border-solid border border-white max-w-fit p-1 rounded my-8 aboutHeader'>About</h1>
+                <div id='aboutKeywordAnimation ' className='h-8'>
+                    <TextTransition className='text-4xl' springConfig={presets.molasses}><h2>{keywords[currentKeywordIndex]}</h2></TextTransition>
                 </div>
-                <div className='aboutParagraph my-4'>
-                    <p className='mb-12'>{aboutFields.acf && aboutFields.acf.about_me_paragraph}</p>
+                <div className='aboutParagraph mt-8'>
+                  <PlainTextToHTML plainText={aboutFields.acf && aboutFields.acf.about_me_paragraph}/>
                 </div>
                 <div className='aboutMeSkills py-4'>
-                    <h3>Some skills I have developed:</h3>
+                    <p>Some skills I have developed:</p>
                     <ul className='skills flex'>
                         {aboutFields.acf &&
                             aboutFields.acf.skill_repeater &&

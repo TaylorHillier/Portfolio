@@ -5,8 +5,31 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    @apply text-gray-300;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5, 
+  a,
+  b,
+  button{
     @apply text-white;
-}
+  }
+
+  .welcome a{
+    @apply text-[#151d1f];
+  }
+
+  .welcome #secondCTA a{
+    @apply text-white;
+  }
+  
+  p{
+    @apply tracking-wide;
+  }
 }
 
 
@@ -42,27 +65,8 @@ canvas{
 
 .tab.active{
     border: 1px solid #ccc;
-    background-color: #2A3D3B;
+    background-color: #8D998A;
 }
-/* 
-.skills {
-  position: relative;
-  width: 100%;
-  height: 50px;
-  overflow: hidden;
-  
-}
-
-.skills::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.4) 80%, transparent 100%);
-  animation: shimmer 5s infinite linear;
-} */
 
 @keyframes shimmer {
   to {

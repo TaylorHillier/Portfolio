@@ -16,7 +16,7 @@ function Nav() {
 
     return (
     <div className='flex flex-col-reverse md:flex-row'>
-        <div className={`md:hidden grid grid-cols-3 justify-items-end ${color ? ' bg-[#70828F] transition duration-300 ease-in-out' : 'bg-transparent'} border-1 text-white`}>
+        <div className={`md:hidden grid grid-cols-3 justify-items-end ${color ? ' bg-[#8D998A] backdrop-blur bg-opacity-80 transition duration-300 ease-in-out' : 'bg-transparent'} border-1 text-white`}>
             <div className='col-start-2 col-end-3'>
               
             </div>

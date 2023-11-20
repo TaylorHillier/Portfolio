@@ -52,8 +52,8 @@ function WelcomePage({apiUrl}) {
                         <h1 className='text-3xl font-bold'>{homeFields.acf.keyword_2}</h1>
                         <p className='py-4'>{homeFields.acf.text_area_3}</p>
                         <div className='buttons flex flex-col' id='cta-buttons'>
-                            <button className='my-2 border-solid border-black border-2 p-2 bg-black'><a href='#projects'>{homeFields.acf.first_cta}</a></button>
-                            <button className='my-2 border-solid border-black border-2 p-2'><a href='#about'>{homeFields.acf.second_cta}</a></button>
+                            <button className='my-2 border-solid p-2 font-bold bg-white'><a href='#projects'>{homeFields.acf.first_cta}</a></button>
+                            <button id='secondCTA' className='my-2 border-solid border-white border-2 p-2'><a href='#about'>{homeFields.acf.second_cta}</a></button>
                         </div>
                         <div className='flex gap-2 mt-4'>
                             <a><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36 " viewBox="0 0 24 24" fill="white"><path d="M0 0v24h24v-24h-24zm8 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.397-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
