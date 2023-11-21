@@ -1,19 +1,32 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import UseReveal from './Reveal';
 
-function ProjectData({ apiUrl }) {
+function ProjectData({ apiUrl}) {
   const [projects, setProjects] = useState([]);
-  
+
   useEffect(() => {
-    fetch(`${apiUrl}project?_embed`, {
-      headers: {
-        Authorization:
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setProjects(data))
-      .catch((error) => console.error('Error fetching data:', error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${apiUrl}project?_embed`, {
+          headers: {
+            Authorization:
+              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        setProjects(data);
+    
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, [apiUrl]);
 
   const TabContent = ({ project }) => {
@@ -21,7 +34,7 @@ function ProjectData({ apiUrl }) {
     const [showFullSummary, setShowFullSummary] = useState(false);
     const summaryRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       // Check if the summary content overflows its container
       if (summaryRef.current) {
         if (summaryRef.current.scrollHeight > summaryRef.current.clientHeight) {
@@ -46,12 +59,13 @@ function ProjectData({ apiUrl }) {
       // Convert plain text to HTML
       const htmlContent = `<p>${plainText}</p>`;
 
-      return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+      return <div dangerouslySetInnerHTML={{ __html: htmlContent }}  />;
     };
 
     UseReveal();
 
-    
+
+  
     return (
       <div>
         <div className='tabs'>
@@ -96,7 +110,7 @@ function ProjectData({ apiUrl }) {
             ) : (
 
                 <div className='backdrop-brightness-90 p-4 shadow-lg shadow-slate-400'>
-                    <PlainTextToHTML plainText={project.acf.project_summary.substring(0, 250)} />
+                    <PlainTextToHTML plainText={project.acf.project_summary.substring(0, 250) + '....'} />
                   <button onClick={toggleSummary} className='flex text-sm m-auto border-solid border p-2 mt-4 rounded bg-white text-[#151d1f] font-bold'>Read More</button>
                 </div>
 
@@ -106,7 +120,7 @@ function ProjectData({ apiUrl }) {
           <p className={`tab-content ${activeTab === 'skills' ? 'active' : ''} p-8 backdrop-brightness-90 shadow-lg shadow-slate-400`}>
             
             {project.acf.project_skills.map((skill) => (
-              <li key={skill.id}>
+              <li key={skill.skill_used}>
                 {skill.skill_used}
               </li>
             ))} 
@@ -124,9 +138,9 @@ function ProjectData({ apiUrl }) {
     <h1 className='border-solid border border-white max-w-fit p-1 m-auto projectsHeader reveal fade-bottom'>Projects</h1>
     <h2 className=' text-md text font-bold my-16 mx-8 reveal fade-bottom'>Here's some of the work I've done (so far).</h2>
     <div className='reveal fade-bottom'>
-      <ul className='project-list '>
+    
         {projects.map((project) => (
-          <li key={project.id} className='my-16'>
+          <article key={project.id} className='my-16'>
             <h2 className='text-center font-bold text-xl m-4 font-semibold'>{project.title.rendered}</h2>
             <div className='mb-4 '>
               {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
@@ -139,9 +153,9 @@ function ProjectData({ apiUrl }) {
               )}
               <TabContent key={project.id} project={project} />
             </div>
-          </li>
+          </article>
         ))}
-      </ul>
+     
     </div>
   </div>
   );

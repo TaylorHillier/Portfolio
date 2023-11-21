@@ -1,22 +1,31 @@
-import {useState, useEffect} from 'react';
+import {useState, useLayoutEffect, useEffect} from 'react';
 import TextTransition, {presets} from 'react-text-transition';
 import UseReveal from './Reveal';
 
 function AboutPage({apiUrl}) {
     const [aboutFields, setAboutFields] = useState([]);
- 
+
     useEffect(() => {
-
-        fetch(`${apiUrl}pages/38?acf_format=standard`, {
-            headers:{
-                Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8",
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => setAboutFields(data))
-            .catch((error) => console.error('Error fetching data:', error));
-
-    }, [apiUrl]);
+        const fetchData = async () => {
+          try {
+            const response = await fetch(`${apiUrl}pages/38?acf_format=standard`, {
+              headers: {
+                Authorization:
+                  'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8',
+              },
+            });
+            const data = await response.json();
+            setAboutFields(data);
+      
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        // Call the fetchData function
+        fetchData();
+      }, [apiUrl]);
+      
 
     const keywords = [
         aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_1,
@@ -49,7 +58,9 @@ function AboutPage({apiUrl}) {
 
       UseReveal();
 
-
+ 
+    
+    
     return(
         <div className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#191b25] text-white'>
             <img src={aboutFields.acf && aboutFields.acf.portrait} loading="lazy" alt="Photo of myself - Taylor Hillier"/>
