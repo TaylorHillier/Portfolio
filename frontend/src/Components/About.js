@@ -51,7 +51,7 @@ function AboutPage({apiUrl}) {
         <div className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#191b25] h-screen text-whit min-h-screen'>
             <img src={aboutFields.acf && aboutFields.acf.portrait}/>
             <div  className='about p-4' id="about"> 
-                <h1 className='border-solid border border-white max-w-fit p-1 rounded my-8 aboutHeader'>About</h1>
+                <h1 className='border-solid border border-white max-w-fit p-1 rounded my-8 aboutHeader '>About</h1>
                 <div id='aboutKeywordAnimation ' className='h-8'>
                     <TextTransition className='text-4xl' springConfig={presets.molasses}><h2>{keywords[currentKeywordIndex]}</h2></TextTransition>
                 </div>
@@ -60,11 +60,11 @@ function AboutPage({apiUrl}) {
                 </div>
                 <div className='aboutMeSkills py-4'>
                     <p>Some skills I have developed:</p>
-                    <ul className='skills flex rounded shadow-lg shadow-gray-400 p-2 mt-2 '>
+                    <ul className='skills flex rounded shadow-lg shadow-gray-400 p-2 mt-4 mt-2 grid grid-cols-3 justify-items-center'>
                         {aboutFields.acf &&
                             aboutFields.acf.skill_repeater &&
                             aboutFields.acf.skill_repeater.map((skill, index) => (
-                            <li key={index}>
+                            <li key={index} className='p-2'>
                                 {skill.skill_group.skill_image && (
                                 <img
                                     src={skill.skill_group.skill_image}
