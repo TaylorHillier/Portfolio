@@ -55,12 +55,12 @@ function AboutPage({apiUrl}) {
                 <div id='aboutKeywordAnimation ' className='h-8'>
                     <TextTransition className='text-4xl' springConfig={presets.molasses}><h2>{keywords[currentKeywordIndex]}</h2></TextTransition>
                 </div>
-                <div className='aboutParagraph mt-8'>
+                <div className='aboutParagraph my-8'>
                   <PlainTextToHTML plainText={aboutFields.acf && aboutFields.acf.about_me_paragraph}/>
                 </div>
                 <div className='aboutMeSkills py-4'>
                     <p>Some skills I have developed:</p>
-                    <ul className='skills flex'>
+                    <ul className='skills flex rounded shadow-lg shadow-gray-400 p-2 mt-2 '>
                         {aboutFields.acf &&
                             aboutFields.acf.skill_repeater &&
                             aboutFields.acf.skill_repeater.map((skill, index) => (
