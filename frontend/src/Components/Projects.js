@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import UseReveal from './Reveal';
 
 function ProjectData({ apiUrl }) {
   const [projects, setProjects] = useState([]);
@@ -47,6 +48,8 @@ function ProjectData({ apiUrl }) {
 
       return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
     };
+
+    UseReveal();
 
     
     return (
@@ -118,26 +121,28 @@ function ProjectData({ apiUrl }) {
 
   return (
     <div className='projects bg-gradient-to-t from-[#0a0a19] via-[#151d1f] to-[#191b25]  mb-20 p-4 md:mb-0' id='projects'>
-    <h1 className='border-solid border border-white max-w-fit p-1 m-auto projectsHeader'>Projects</h1>
-    <h2 className=' text-md text font-bold my-16 mx-8'>Here's some of the work I've done (so far).</h2>
-    <ul className='project-list '>
-      {projects.map((project) => (
-        <li key={project.id} className='my-16'>
-          <h2 className='text-center font-bold text-xl m-4 font-semibold'>{project.title.rendered}</h2>
-          <div className='mb-4'>
-            {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-                <img
-                  src={project._embedded['wp:featuredmedia'][0].source_url}
-                  alt={project.title.rendered}
-                  className='mb-4'
-                  loading='lazy'
-                />
-            )}
-            <TabContent key={project.id} project={project} />
-          </div>
-        </li>
-      ))}
-    </ul>
+    <h1 className='border-solid border border-white max-w-fit p-1 m-auto projectsHeader reveal fade-bottom'>Projects</h1>
+    <h2 className=' text-md text font-bold my-16 mx-8 reveal fade-bottom'>Here's some of the work I've done (so far).</h2>
+    <div className='reveal fade-bottom'>
+      <ul className='project-list '>
+        {projects.map((project) => (
+          <li key={project.id} className='my-16 reveal fade-bottom'>
+            <h2 className='text-center font-bold text-xl m-4 font-semibold'>{project.title.rendered}</h2>
+            <div className='mb-4 '>
+              {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+                  <img
+                    src={project._embedded['wp:featuredmedia'][0].source_url}
+                    alt={project.title.rendered}
+                    className='mb-4'
+                    loading='lazy'
+                  />
+              )}
+              <TabContent key={project.id} project={project} />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
   );
 }

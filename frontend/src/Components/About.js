@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import TextTransition, {presets} from 'react-text-transition';
+import UseReveal from './Reveal';
 
 function AboutPage({apiUrl}) {
     const [aboutFields, setAboutFields] = useState([]);
@@ -46,21 +47,23 @@ function AboutPage({apiUrl}) {
         return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
       };
 
+      UseReveal();
+
 
     return(
         <div className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#191b25] text-white'>
             <img src={aboutFields.acf && aboutFields.acf.portrait} loading="lazy" alt="Photo of myself - Taylor Hillier"/>
-            <div  className='about p-4  h-[80vh]' id="about"> 
+            <div  className='about p-4 h-[80vh]' id="about"> 
                 <h1 className='border-solid border border-white max-w-fit p-1 my-8 aboutHeader '>About</h1>
-                <div id='aboutKeywordAnimation ' className='h-8'>
+                <div id='aboutKeywordAnimation' className='h-8'>
                     <TextTransition className='text-4xl' springConfig={presets.molasses}><h2>{keywords[currentKeywordIndex]}</h2></TextTransition>
                 </div>
-                <div className='aboutParagraph my-8'>
+                <div className='aboutParagraph my-8 reveal fade-bottom'>
                   <PlainTextToHTML plainText={aboutFields.acf && aboutFields.acf.about_me_paragraph}/>
                 </div>
                 <div className='aboutMeSkills py-4'>
                     <p className='font-bold'>Some skills I have developed:</p>
-                    <ul className='skills flex rounded shadow-lg shadow-gray-400 p-2 mt-4 mt-2 grid grid-cols-3 justify-items-center'>
+                    <ul className='skills flex rounded shadow-lg shadow-gray-400 p-2 mt-4 mt-2 grid grid-cols-3 justify-items-center reveal fade-bottom'>
                         {aboutFields.acf &&
                             aboutFields.acf.skill_repeater &&
                             aboutFields.acf.skill_repeater.map((skill, index) => (
