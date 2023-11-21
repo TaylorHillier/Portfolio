@@ -126,7 +126,7 @@ function ProjectData({ apiUrl }) {
     <div className='reveal fade-bottom'>
       <ul className='project-list '>
         {projects.map((project) => (
-          <li key={project.id} className='my-16 reveal fade-bottom'>
+          <li key={project.id} className='my-16'>
             <h2 className='text-center font-bold text-xl m-4 font-semibold'>{project.title.rendered}</h2>
             <div className='mb-4 '>
               {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (

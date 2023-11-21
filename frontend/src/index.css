@@ -109,6 +109,7 @@ canvas{
 }
 .active.fade-bottom {
   animation: fade-bottom 1s ease-in;
+  animation-iteration-count: 1;
 }
 
 @keyframes fade-bottom {

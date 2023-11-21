@@ -15,7 +15,7 @@ const UseReveal = () => {
           if (elementTop < windowHeight - elementVisible) {
             element.classList.add('active');
           } else {
-            element.classList.remove('active');
+            element.classList.remove('reveal');
           }
 
           return element;
@@ -35,7 +35,7 @@ const UseReveal = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
+  
   return reveals;
 };
 
