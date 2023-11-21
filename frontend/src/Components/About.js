@@ -48,10 +48,10 @@ function AboutPage({apiUrl}) {
 
 
     return(
-        <div className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#191b25] h-screen text-whit min-h-screen'>
-            <img src={aboutFields.acf && aboutFields.acf.portrait}/>
-            <div  className='about p-4' id="about"> 
-                <h1 className='border-solid border border-white max-w-fit p-1 rounded my-8 aboutHeader '>About</h1>
+        <div className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#191b25] text-white'>
+            <img src={aboutFields.acf && aboutFields.acf.portrait} loading="lazy" alt="Photo of myself - Taylor Hillier"/>
+            <div  className='about p-4  h-[80vh]' id="about"> 
+                <h1 className='border-solid border border-white max-w-fit p-1 my-8 aboutHeader '>About</h1>
                 <div id='aboutKeywordAnimation ' className='h-8'>
                     <TextTransition className='text-4xl' springConfig={presets.molasses}><h2>{keywords[currentKeywordIndex]}</h2></TextTransition>
                 </div>
@@ -59,7 +59,7 @@ function AboutPage({apiUrl}) {
                   <PlainTextToHTML plainText={aboutFields.acf && aboutFields.acf.about_me_paragraph}/>
                 </div>
                 <div className='aboutMeSkills py-4'>
-                    <p>Some skills I have developed:</p>
+                    <p className='font-bold'>Some skills I have developed:</p>
                     <ul className='skills flex rounded shadow-lg shadow-gray-400 p-2 mt-4 mt-2 grid grid-cols-3 justify-items-center'>
                         {aboutFields.acf &&
                             aboutFields.acf.skill_repeater &&
@@ -68,7 +68,7 @@ function AboutPage({apiUrl}) {
                                 {skill.skill_group.skill_image && (
                                 <img
                                     src={skill.skill_group.skill_image}
-                                    alt={`Skill ${index + 1}`}
+                                    alt={skill.skill_group.skill_label || `Skill ${index + 1}`}
                                 />
                                 )}
                             </li>

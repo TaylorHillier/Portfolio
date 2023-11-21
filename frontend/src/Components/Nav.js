@@ -11,8 +11,8 @@ function Nav() {
 
   return (
     <nav
-      className={` md:flex md:justify-evenly text-white p-2 ${
-        color ? 'bg-[#70828F] transition duration-300 ease-in-out' : 'bg-transparent'
+      className={` md:flex md:justify-evenly text-white p-2 h-20 ${
+        color ? 'bg-[#70828F] transition duration-300 ease-in-out opacity-95' : 'bg-transparent'
       }`}
     >
       <ul className='md:flex md:justify-evenly text-white grid grid-cols-3 justify-items-center'>

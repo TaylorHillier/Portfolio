@@ -27,7 +27,7 @@ const ParticleBg = () => {
             height: "100vh",
             "z-index": -1,
           },
-          fpsLimit: 60, 
+          fpsLimit: 20, 
           particles: { 
             shape: { 
               type: "circle", 
@@ -37,7 +37,7 @@ const ParticleBg = () => {
                 enable: true, 
                 minimumValue: 0.5, 
               }, 
-              value: 1.4, 
+              value: 1, 
             }, 
             color: { 
               value: "#f1f1f1", 
@@ -45,10 +45,10 @@ const ParticleBg = () => {
             number: { 
               density: { 
                 enable: true, 
-                area: 1080, 
+                area: 800, 
               }, 
               limit: 0, 
-              value: 800, 
+              value: 400, 
             }, 
             opacity: { 
               animation: { 
