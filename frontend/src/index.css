@@ -8,14 +8,24 @@
     @apply text-gray-300;
   }
   
+  a,
+  button{
+    @apply text-white;
+    @apply tracking-wide;
+  }
+
   h1,
   h2,
   h3,
   h4,
-  h5, 
-  a,
-  b,
-  button{
+  h5{
+    @apply tracking-wide;
+    @apply text-gray-300;
+  }
+
+  .projects h1,
+  .projects h2,
+  .projects h3{
     @apply text-white;
   }
 
@@ -30,6 +40,10 @@
   p{
     @apply tracking-wide;
   }
+
+  footer nav a{
+    @apply text-[#d1dbd5];
+  }
 }
 
 
@@ -39,34 +53,6 @@
 
 canvas{
   background-size: cover;
-}
-
-
-@keyframes shimmer {
-  100%{
-    left: 100%;
-  }
-  0%{
-    right: 0%;
-  }
-}
-
-.aboutHeader, .projectsHeader {
-  position: relative;
-  width: 100%;
-  overflow: hidden; 
-}
-
-.aboutHeader::before, .projectsHeader::before{
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.4) 40%, rgba(255, 255, 255, 0.8) 70%, rgba(255, 255, 255, 0.4) 90%, transparent 100%);
-  animation: shimmer 5s infinite ease-out;
-  animation-delay: 5s;
 }
 
 
@@ -122,3 +108,43 @@ canvas{
     opacity: 1;
   }
 }
+
+/* code inspiraton from: https://www.julienthibeaut.xyz/blog/create-shine-effect-on-card-with-tailwind-css */
+
+.shine {
+  --shine-deg: 45deg;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #0a0a19;
+  background-color: #0a0a19;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  background-repeat: no-repeat;
+  background-position: -100% 0, 0 0;
+
+  background-image: linear-gradient(
+    var(--shine-deg),
+    transparent 20%,
+    transparent 40%,
+    rgb(68, 68, 68, 0.2) 50%,
+    rgb(68, 68, 68, 0.2) 55%,
+    transparent 70%,
+    transparent 100%
+  );
+
+  background-size: 250% 250%, 100% 100%;
+  animation: shineAnimation 3.5s infinite linear;
+}
+
+@keyframes shineAnimation {
+  0% {
+    background-position: 200% 0, 0 0;
+  }
+  100% {
+    background-position: -200% 0, 0 0;
+  }
+}
+
+/* /////////////////////////////////////////////////////////////////// */
+
+

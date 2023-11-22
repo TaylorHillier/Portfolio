@@ -102,7 +102,7 @@ function ProjectData({ apiUrl}) {
 
           {showFullSummary ? (
 
-                <div className=' backdrop-brightness-90 p-8 shadow-lg shadow-slate-400'>
+                <div className=' backdrop-brightness-90 p-4 shadow-lg shadow-slate-400'>
                   <PlainTextToHTML plainText={project.acf.project_summary} />
                   <button onClick={toggleSummary} className='flex text-sm m-auto border-solid border p-2 mt-4 rounded bg-white text-[#151d1f] font-bold'>Read Less</button>
                 </div>
@@ -134,14 +134,14 @@ function ProjectData({ apiUrl}) {
   };
 
   return (
-    <div className='projects bg-gradient-to-t from-[#0a0a19] via-[#151d1f] to-[#191b25]  mb-20 p-4 md:mb-0' id='projects'>
-    <h1 className='border-solid border border-white max-w-fit p-1 m-auto projectsHeader reveal fade-bottom'>Projects</h1>
+    <div className='projects bg-gradient-to-t from-[#0a0a19] via-[#151d1f] to-[#70828F] p-2 md:mb-0 reveal' id='projects'>
+    <h1 className='border-solid border max-w-fit p-2 m-auto fade-bottom font-thin shine'>PROJECTS</h1>
     <h2 className=' text-md text font-bold my-16 mx-8 reveal fade-bottom'>Here's some of the work I've done (so far).</h2>
     <div className='reveal fade-bottom'>
     
         {projects.map((project) => (
           <article key={project.id} className='my-16'>
-            <h2 className='text-center font-bold text-xl m-4 font-semibold'>{project.title.rendered}</h2>
+            <h2 className=' font-bold text-3xl mb-4 font-semibold'>{project.title.rendered}</h2>
             <div className='mb-4 '>
               {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
                   <img

@@ -58,14 +58,11 @@ function AboutPage({apiUrl}) {
 
       UseReveal();
 
- 
-    
-    
     return(
-        <div className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#191b25] text-white'>
+        <div className='bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828F] text-white'>
             <img src={aboutFields.acf && aboutFields.acf.portrait} loading="lazy" alt="Photo of myself - Taylor Hillier"/>
             <div  className='about p-4 h-[80vh]' id="about"> 
-                <h1 className='border-solid border border-white max-w-fit p-1 my-8 aboutHeader '>About</h1>
+                <h1 className='border-solid border border-gray-400 max-w-fit p-2 my-8 font-thin shine'>ABOUT</h1>
                 <div id='aboutKeywordAnimation' className='h-8'>
                     <TextTransition className='text-4xl' springConfig={presets.molasses}><h2>{keywords[currentKeywordIndex]}</h2></TextTransition>
                 </div>

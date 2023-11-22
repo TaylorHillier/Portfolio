@@ -13,9 +13,9 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const welcomeResponse = await fetch(`${wpApiUrl}pages/21`);
-        const aboutResponse = await fetch(`${wpApiUrl}pages/38?acf_format=standard`);
-        const projectResponse = await fetch(`${wpApiUrl}project?_embed`);
+        await fetch(`${wpApiUrl}pages/21`);
+        await fetch(`${wpApiUrl}pages/38?acf_format=standard`);
+        await fetch(`${wpApiUrl}project?_embed`);
 
         setLoading(false);
       } catch (error) {
