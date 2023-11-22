@@ -81,7 +81,7 @@ canvas{
 
 .tab.active{
     border: 1px solid #ccc;
-    background-color: #8D998A;
+    background-color: #70828F;
 }
 
 
@@ -126,8 +126,8 @@ canvas{
     var(--shine-deg),
     transparent 20%,
     transparent 40%,
-    rgb(68, 68, 68, 0.2) 50%,
-    rgb(68, 68, 68, 0.2) 55%,
+    rgba(223, 223, 223, 0.2) 50%,
+    rgba(179, 179, 179, 0.2) 55%,
     transparent 70%,
     transparent 100%
   );

@@ -39,7 +39,7 @@ const ParticleBg = () => {
               enable: true,
               minimumValue: 0.5,
             },
-            value: 1,
+            value: 1.5,
           },
           color: {
             value: "#f1f1f1",
