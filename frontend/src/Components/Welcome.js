@@ -1,28 +1,28 @@
 import { useState, useLayoutEffect, useEffect } from 'react';
 import ParticleBg from './ParticleBg';
-
+import Loading from './LoadingScreen';
 
 function WelcomePage({ apiUrl }) {
   const [homeFields, setHomeFields] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isLoaded, setLoadStatus] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
         const response = await fetch(`${apiUrl}pages/21`, {
           headers: {
             Authorization:
               'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8',
-          },
-        });
-        const data = await response.json();
-        setHomeFields(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+          }})
+          if(response.ok){
+            const data = await response.json();
+            setHomeFields(data);
+            setLoadStatus(true);
+          } else {
+            setLoadStatus(false);
+          }
 
-    // Fetch data
+    };
     fetchData();
   }, [apiUrl]);
 
@@ -39,10 +39,11 @@ function WelcomePage({ apiUrl }) {
   }, []);
 
   return (
-    <div className='welcome m-auto h-screen flex items-center' id='welcome'>
+    <>
+    {isLoaded && (
+    <section className='welcome m-auto h-screen flex items-center sticky inset-0 z-10' id='welcome'>
       <div>
         <ParticleBg />
-        {homeFields.acf?.home_page_repeater && ( // Check if data is loaded
           <div className='welcomeContent max-w-lg mt-0 md:mx-auto  backdrop-brightness-90 shadow-lg shadow-slate-400 m-4'>
             <div className='welcome-content-container p-4'>
               {homeFields.acf?.home_page_repeater?.map((item, index) => (
@@ -90,7 +91,6 @@ function WelcomePage({ apiUrl }) {
               </div>
             </div>
           </div>
-        )}
         <div className='animate-bounce animate-duration-5000 absolute bottom-28 w-full'>
           <button className='flex m-auto'>
             <a href='/#about'>
@@ -107,7 +107,12 @@ function WelcomePage({ apiUrl }) {
           </button>
         </div>
       </div>
-    </div>
+    </section>
+      )} : {
+        <Loading />
+      }
+
+      </>
   );
 }
 

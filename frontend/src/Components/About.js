@@ -10,23 +10,24 @@ function AboutPage({ apiUrl }) {
     aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_3,
   ];
   const [currentKeywordIndex, setCurrentKeywordIndex] = useState(0);
+  const [isLoaded, setLoadStatus] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
         const response = await fetch(`${apiUrl}pages/38?acf_format=standard`, {
           headers: {
             Authorization:
               'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8',
-          },
-        });
-        const data = await response.json();
-        setAboutFields(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+          }})
+          if(response.ok){
+            const data = await response.json();
+            setAboutFields(data);
+            setLoadStatus(true);
+          } else {
+            setLoadStatus(false);
+          }
 
+    };
     fetchData();
   }, [apiUrl]);
 
@@ -51,11 +52,15 @@ function AboutPage({ apiUrl }) {
   UseReveal();
 
   return (
-    <div className='bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828F] text-white'>
+      <>
+      { isLoaded && 
+      <section className='relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828F] text-white'>
       <img src={aboutFields.acf && aboutFields.acf.portrait} loading="lazy" alt="Photo of myself - Taylor Hillier" />
-      <div className='about p-4 h-[80vh]' id="about">
-        <h1 className='border-solid border border-gray-400 max-w-fit p-2 my-8 font-thin shine'>ABOUT</h1>
-        <div id='aboutKeywordAnimation' className='h-8'>
+      <div className='about p-4 h-[80vh]' id="about" role="region" aria-label="About Section">
+        <h1 className='border-solid border border-gray-400 max-w-fit p-2 my-8 font-thin shine'>
+          ABOUT
+        </h1>
+        <div id='aboutKeywordAnimation' className='h-8' aria-live="polite">
           <TextTransition className='text-4xl' springConfig={presets.molasses}>
             <h2>{keywords[currentKeywordIndex]}</h2>
           </TextTransition>
@@ -65,7 +70,7 @@ function AboutPage({ apiUrl }) {
         </div>
         <div className='aboutMeSkills py-4'>
           <p className='font-bold'>Some skills I have developed:</p>
-          <ul className='skills flex rounded shadow-lg shadow-gray-400 p-2 mt-4 mt-2 grid grid-cols-3 justify-items-center reveal fade-bottom'>
+          <ul className='skills rounded shadow-lg shadow-gray-400 p-2 mt-4  grid grid-cols-3 justify-items-center reveal fade-bottom'>
             {aboutFields.acf &&
               aboutFields.acf.skill_repeater &&
               aboutFields.acf.skill_repeater.map((skill, index) => (
@@ -81,7 +86,9 @@ function AboutPage({ apiUrl }) {
           </ul>
         </div>
       </div>
-    </div>
+      </section>
+      }
+      </>
   );
 }
 

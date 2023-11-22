@@ -3,30 +3,27 @@ import UseReveal from './Reveal';
 
 function ProjectData({ apiUrl }) {
   const [projects, setProjects] = useState([]);
+  const [isLoaded, setLoadStatus] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
         const response = await fetch(`${apiUrl}project?_embed`, {
           headers: {
             Authorization:
               'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8',
-          },
-        });
+          }})
+          if(response.ok){
+            const data = await response.json();
+            setProjects(data);
+            setLoadStatus(true);
+          } else {
+            setLoadStatus(false);
+          }
 
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
     };
-
     fetchData();
   }, [apiUrl]);
+
 
   const TabContent = ({ project }) => {
     const [activeTab, setActiveTab] = useState('summary');
@@ -121,31 +118,35 @@ function ProjectData({ apiUrl }) {
   };
 
   return (
-    <div className='projects bg-gradient-to-t from-[#0a0a19] via-[#151d1f] to-[#70828F] p-2 md:mb-0 reveal' id='projects'>
-      <h1 className='border-solid border max-w-fit p-2 m-auto fade-bottom font-thin shine'>PROJECTS</h1>
-      <h2 className=' text-md text my-16 mx-8 reveal fade-bottom'></h2>
-      <div className='reveal fade-bottom'>
-        {projects.map((project) => (
-          <article key={project.id} className='my-16'>
-            <h2 className=' font-bold text-3xl mb-4 font-semibold'>{project.title.rendered}</h2>
-            <div className='h-px w-full bg-gradient-to-r from-transparent via-white to-transparent'>
-              <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
-            </div>
-            <div className='my-4'>
-              {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-                <img
-                  src={project._embedded['wp:featuredmedia'][0].source_url}
-                  alt={project.title.rendered}
-                  className='mb-4'
-                  loading='lazy'
-                />
-              )}
-              <TabContent key={project.id} project={project} />
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
+    <>
+    { isLoaded && 
+      <section className='relative projects z-10 bg-gradient-to-t from-[#0a0a19] via-[#151d1f] to-[#70828F] p-2 md:mb-0 reveal' id='projects'>
+        <h1 className='border-solid border max-w-fit p-2 m-auto fade-bottom font-thin shine'>PROJECTS</h1>
+        <h2 className=' text-md text my-16 mx-8 reveal fade-bottom'></h2>
+        <div className='reveal fade-bottom'>
+          {projects.map((project) => (
+            <article key={project.id} className='my-16'>
+              <h2 className=' font-bold text-3xl mb-4 font-semibold'>{project.title.rendered}</h2>
+              <div className='h-px w-full bg-gradient-to-r from-transparent via-white to-transparent'>
+                <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
+              </div>
+              <div className='my-4'>
+                {/* {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+                  <img
+                    src={project._embedded['wp:featuredmedia'][0].source_url}
+                    alt={project.title.rendered}
+                    className='mb-4'
+                    loading='lazy'
+                  />
+                )} */}
+                <TabContent key={project.id} project={project} />
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    }
+    </>
   );
 }
 

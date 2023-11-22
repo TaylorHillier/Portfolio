@@ -1,7 +1,7 @@
 function Footer() {
 
     return(
-        <footer className="mb-20 bg-[#0a0a19] p-8 flex flex-col justify-items-center items-center text-[#d1dbd5] ">
+        <footer className="relative z-10 mb-20 bg-[#0a0a19] p-8 flex flex-col justify-items-center items-center text-[#d1dbd5] ">
            <nav className="flex gap-8 justify-center border-t border-slate-700 m-2 p-4 flex-wrap">
                 <a href="#welcome">Home</a>
                 <a href="#about">About</a>
