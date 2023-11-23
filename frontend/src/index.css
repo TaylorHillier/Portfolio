@@ -161,18 +161,7 @@ canvas{
   filter: brightness(0.2);
 }
 
-/* Add the following styles to your CSS file or inline styles */
-.group-hover [mask] {
-  /* Apply the mask as a mask-image */
-  mask: url(#mask) center / contain no-repeat;
-}
-
-.group-hover [mask] path {
-  /* Apply the original fill color */
-  fill: white;
-}
-
-.group-hover:hover [mask] path {
-  /* Apply the inverted fill color on hover */
-  fill: none;
+.logo {
+  max-width: 80vw;
+  max-height: 3rem;
 }
