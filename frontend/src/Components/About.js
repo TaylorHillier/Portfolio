@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import TextTransition, { presets } from 'react-text-transition';
 import UseReveal from './Reveal';
+import { TypeAnimation } from 'react-type-animation';
 
 function AboutPage({ apiUrl }) {
   const [aboutFields, setAboutFields] = useState([]);
+  const [currentKeywordIndex, setCurrentKeywordIndex] = useState(0);
+  const [isLoaded, setLoadStatus] = useState(false);
+
+
   const keywords = [
     aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_1,
     aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_2,
     aboutFields.acf && aboutFields.acf.about_keyword_group && aboutFields.acf.about_keyword_group.about_keyword_3,
   ];
-  const [currentKeywordIndex, setCurrentKeywordIndex] = useState(0);
-  const [isLoaded, setLoadStatus] = useState(false);
-
+  
   useEffect(() => {
     const fetchData = async () => {
         const response = await fetch(`${apiUrl}pages/38?acf_format=standard`, {
@@ -54,22 +56,34 @@ function AboutPage({ apiUrl }) {
   return (
       <>
       { isLoaded && 
-      <section className='relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828F] text-white'>
+      <section className='relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828F] text-white '>
       <img src={aboutFields.acf && aboutFields.acf.portrait} loading="lazy" alt="Photo of myself - Taylor Hillier" />
-      <div className='about p-4 h-[80vh]' id="about" role="region" aria-label="About Section">
+      <div className='about p-4 h-[80vh] reveal fade-bottom' id="about">
         <h1 className='border-solid border border-gray-400 max-w-fit p-2 my-8 font-thin shine'>
           ABOUT
         </h1>
-        <div id='aboutKeywordAnimation' className='h-8' aria-live="polite">
-          <TextTransition className='text-4xl' springConfig={presets.molasses}>
-            <h2>{keywords[currentKeywordIndex]}</h2>
-          </TextTransition>
+        <div id='aboutKeywordAnimation' className='h-8 ' aria-live="polite">
+          <TypeAnimation
+          sequence={[
+            // Same substring at the start will only be typed out once, initially
+            keywords[0],
+            4000, // wait 1s before replacing "Mice" with "Hamsters"
+            keywords[1],
+            4000,
+            keywords[2],
+            4000
+          ]}
+          wrapper="span"
+          speed={30}
+          style={{ fontSize: '2em', display: 'inline-block' }}
+          repeat={Infinity}
+          />
         </div>
         <div className='aboutParagraph my-8 reveal fade-bottom'>
           <PlainTextToHTML plainText={aboutFields.acf && aboutFields.acf.about_me_paragraph} />
         </div>
         <div className='aboutMeSkills py-4'>
-          <p className='font-bold'>Some skills I have developed:</p>
+          <p className='font-bold reveal fade-bottom'>Some skills I have developed:</p>
           <ul className='skills rounded shadow-lg shadow-gray-400 p-2 mt-4  grid grid-cols-3 justify-items-center reveal fade-bottom'>
             {aboutFields.acf &&
               aboutFields.acf.skill_repeater &&

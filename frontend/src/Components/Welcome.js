@@ -43,7 +43,7 @@ function WelcomePage({ apiUrl }) {
     {!isLoaded ? (
       <Loading/>
       ) : (
-    <section className='welcome m-auto h-screen flex items-center sticky z-10' id='welcome'>
+    <section className='welcome m-auto h-screen flex items-center sticky inset-0 z-10' id='welcome'>
       <div>
         <ParticleBg />
           <div className='welcomeContent max-w-lg mt-0 md:mx-auto  backdrop-brightness-90 shadow-lg shadow-slate-400 m-4'>

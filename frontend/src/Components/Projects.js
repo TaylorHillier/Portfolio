@@ -120,25 +120,25 @@ function ProjectData({ apiUrl }) {
   return (
     <>
     { isLoaded && 
-      <section className='relative projects z-10 bg-gradient-to-t from-[#0a0a19] via-[#151d1f] to-[#70828F] p-2 md:mb-0 reveal' id='projects'>
-        <h1 className='border-solid border max-w-fit p-2 m-auto fade-bottom font-thin shine'>PROJECTS</h1>
-        <h2 className=' text-md text my-16 mx-8 reveal fade-bottom'></h2>
+      <section className='relative projects z-10 bg-gradient-to-t from-[#0a0a19] via-[#151d1f] to-[#70828F] p-2 md:mb-0 ' id='projects'>
+        <h1 className='border-solid border max-w-fit p-2 m-auto reveal fade-bottom font-thin shine'>PROJECTS</h1>
+        <h2 className=' text-md text my-8 mx-8 reveal fade-bottom'></h2>
         <div className='reveal fade-bottom'>
           {projects.map((project) => (
-            <article key={project.id} className='my-16'>
+            <article key={project.id} className='my-16 reveal fade-bottom'>
               <h2 className=' font-bold text-3xl mb-4 font-semibold'>{project.title.rendered}</h2>
               <div className='h-px w-full bg-gradient-to-r from-transparent via-white to-transparent'>
                 <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
               </div>
               <div className='my-4'>
-                {/* {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+                {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
                   <img
                     src={project._embedded['wp:featuredmedia'][0].source_url}
                     alt={project.title.rendered}
-                    className='mb-4'
+                    className='mb-4 hidden'
                     loading='lazy'
                   />
-                )} */}
+                )}
                 <TabContent key={project.id} project={project} />
               </div>
             </article>
