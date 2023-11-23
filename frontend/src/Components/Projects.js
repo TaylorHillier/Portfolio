@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import UseReveal from './Reveal';
+import {Link} from 'react-router-dom';
 
 function ProjectData({ apiUrl }) {
   const [projects, setProjects] = useState([]);
@@ -87,6 +88,9 @@ function ProjectData({ apiUrl }) {
             {showFullSummary ? (
               <div className='backdrop-brightness-90 p-4 shadow-lg shadow-slate-400'>
                 <PlainTextToHTML plainText={project.acf.project_summary} />
+                <Link to={`/project/${project.slug}`}>
+              {project.title.rendered}
+            </Link>
                 <button
                   onClick={toggleSummary}
                   className='flex text-sm m-auto border-solid border p-2 mt-4 rounded bg-white text-[#151d1f] font-bold'
@@ -97,6 +101,9 @@ function ProjectData({ apiUrl }) {
             ) : (
               <div className='backdrop-brightness-90 p-4 shadow-lg shadow-slate-400'>
                 <PlainTextToHTML plainText={project.acf.project_summary.substring(0, 250) + '....'} />
+                <Link to={`/project/${project.slug}`}>
+              {project.title.rendered}
+            </Link>
                 <button
                   onClick={toggleSummary}
                   className='flex text-sm m-auto border-solid border p-2 mt-4 rounded bg-white text-[#151d1f] font-bold'
@@ -131,14 +138,6 @@ function ProjectData({ apiUrl }) {
                 <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
               </div>
               <div className='my-4'>
-                {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-                  <img
-                    src={project._embedded['wp:featuredmedia'][0].source_url}
-                    alt={project.title.rendered}
-                    className='mb-4 hidden'
-                    loading='lazy'
-                  />
-                )}
                 <TabContent key={project.id} project={project} />
               </div>
             </article>
