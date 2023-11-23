@@ -20,7 +20,7 @@
   h4,
   h5{
     @apply tracking-wide;
-    @apply text-gray-300;
+    
   }
 
   .projects h1,

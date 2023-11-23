@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from './LoadingScreen';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 const ProjectGallery = ({ apiUrl }) => {
   // Render the detailed view of the selected project
@@ -37,9 +37,13 @@ const ProjectGallery = ({ apiUrl }) => {
 
   return (
     <div className='bg-[#0a0a19] h-screen'>
+
+        <Link to={`/#${projectSlug}`} className='absolute top-4 left-4 text-white'>
+        Back to Home
+      </Link>
       {project.map((project) => (
         <article key={project.id} className=''>
-          <h2 className=' font-bold text-3xl mb-4 font-semibold'>{project.title.rendered}</h2>
+          <h2 className=' font-bold text-3xl mb-4'>{project.title.rendered}</h2>
           <div className='h-px w-full bg-gradient-to-r from-transparent via-white to-transparent'>
             <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
           </div>

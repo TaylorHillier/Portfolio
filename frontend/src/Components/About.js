@@ -59,7 +59,7 @@ function AboutPage({ apiUrl }) {
       <section className='relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828F] text-white '>
       <img src={aboutFields.acf && aboutFields.acf.portrait} loading="lazy" alt="Photo of myself - Taylor Hillier" />
       <div className='about p-4 h-[80vh] reveal fade-bottom' id="about">
-        <h1 className='border-solid border border-gray-400 max-w-fit p-2 my-8 font-thin shine'>
+        <h1 className='border-solid border border-gray-400 max-w-fit p-2 my-8 shine'>
           ABOUT
         </h1>
         <div id='aboutKeywordAnimation' className='h-8 ' aria-live="polite">
