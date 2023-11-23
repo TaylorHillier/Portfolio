@@ -10,7 +10,6 @@
   
   a,
   button{
-    @apply text-white;
     @apply tracking-wide;
   }
 
@@ -19,21 +18,12 @@
   h3,
   h4,
   h5{
-    @apply tracking-wide;
-    
+    @apply tracking-wide; 
   }
 
   .projects h1,
   .projects h2,
   .projects h3{
-    @apply text-white;
-  }
-
-  .welcome a{
-    @apply text-[#151d1f];
-  }
-
-  .welcome #secondCTA a{
     @apply text-white;
   }
   
@@ -43,6 +33,10 @@
 
   footer nav a{
     @apply text-[#d1dbd5];
+  }
+
+  .summary p{
+    @apply text-white;
   }
 }
 
@@ -55,15 +49,13 @@ canvas{
   background-size: cover;
 }
 
-
-
 .tabs {
   display: flex;
 }
 
 .tab {
   cursor: pointer;
-  padding: 10px;
+  padding: 0.5rem;
   border: 1px solid #ccc;
 }
 
@@ -148,4 +140,39 @@ canvas{
 
 /* /////////////////////////////////////////////////////////////////// */
 
+.link-with-arrow {
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
 
+.link-with-arrow::before {
+  content: '←'; /* Unicode left-pointing arrow character or use an image */
+  margin-right: 0.1rem;
+  transition: transform 0.3s ease-out; /* Add a smooth transition */
+}
+
+.link-with-arrow:hover::before {
+  transform: translateX(-0.5rem);
+}
+
+.gallery-brightness{
+  filter: brightness(0.2);
+}
+
+/* Add the following styles to your CSS file or inline styles */
+.group-hover [mask] {
+  /* Apply the mask as a mask-image */
+  mask: url(#mask) center / contain no-repeat;
+}
+
+.group-hover [mask] path {
+  /* Apply the original fill color */
+  fill: white;
+}
+
+.group-hover:hover [mask] path {
+  /* Apply the inverted fill color on hover */
+  fill: none;
+}

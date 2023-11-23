@@ -36,30 +36,33 @@ const ProjectGallery = ({ apiUrl }) => {
   }
 
   return (
-    <div className='bg-[#0a0a19] h-screen'>
-
-        <Link to={`/#${projectSlug}`} className='absolute top-4 left-4 text-white'>
-        Back to Home
-      </Link>
+    <section className=' h-screen'>
       {project.map((project) => (
-        <article key={project.id} className=''>
-          <h2 className=' font-bold text-3xl mb-4'>{project.title.rendered}</h2>
-          <div className='h-px w-full bg-gradient-to-r from-transparent via-white to-transparent'>
-            <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
+        <article key={project.id} className='py-40 '>
+          <Link to={`/#${projectSlug}`} className='ml-4 text-white link-with-arrow'>
+            Back to Home
+          </Link>
+          <div id='summary-content'>
+            <h2 className=' font-bold text-3xl m-4'>{project.title.rendered}</h2>
+            <div className='h-px w-full bg-gradient-to-r from-transparent via-white to-transparent'>
+                <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
+            </div>
+            <p className='m-4'>{project.acf.project_gallery_summary}</p>
           </div>
-          <div className='my-4'>
+          <div className=''>
             {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
               <img
                 src={project._embedded['wp:featuredmedia'][0].source_url}
                 alt={project.title.rendered}
-                className='mb-4'
-                loading='lazy'
+                className='object-cover object-center h-full w-full inset-0 absolute -z-50 gallery-brightness'
+                loading='eager'
               />
             )}
+             <div className="absolute top-0 left-0 w-full h-full bg-[#0a0a19] opacity-50 -z-50"></div>
           </div>
         </article>
       ))}
-    </div>
+    </section>
   );
 };
 
