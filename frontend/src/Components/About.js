@@ -15,12 +15,7 @@ function AboutPage({ apiUrl }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${apiUrl}pages/38?acf_format=standard`, {
-        headers: {
-          Authorization:
-            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8',
-        },
-      });
+      const response = await fetch(`${apiUrl}pages/38?acf_format=standard`);
       if (response.ok) {
         const data = await response.json();
         setAboutFields(data);
@@ -54,18 +49,18 @@ function AboutPage({ apiUrl }) {
 
   return (
     <>
-      {isLoaded && (
-        <section className="relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828F] text-white w-full">
-          <div className="md:flex md:flex-row-reverse">
+        {isLoaded && (
+        <section className="relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828F] text-white w-full min-h-screen ">
+          <div className="md:grid md:grid-cols-2 md:min-w-full md:items-center max-h-full">
             <img
               src={aboutFields.acf && aboutFields.acf.portrait}
               loading="lazy"
               alt="Photo of myself - Taylor Hillier"
               width="768px"
               height="100%"
-              className="max-h-screen max-w-full object-cover object-center md:w-1/2"
+              className="max-w-full object-cover object-center max-h-screen"
             />
-            <div className="about p-4 h-[80vh] reveal fade-bottom md:px-[5vh]" id="about">
+            <div className="about p-4  reveal fade-bottom md:px-[5vh] h-full max-h-screen" id="about">
               <h1 className="border-solid border border-gray-400 max-w-fit p-2 my-8 shine">ABOUT</h1>
               <div id="aboutKeywordAnimation" className="h-8 lg:text-3xl lg:my-16" aria-live="polite">
                 <TypeAnimation

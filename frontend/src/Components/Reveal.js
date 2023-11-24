@@ -10,7 +10,7 @@ const UseReveal = () => {
       setReveals((prevReveals) =>
         prevReveals.map((element) => {
           const elementTop = element.getBoundingClientRect().top;
-          const elementVisible = -100;
+          const elementVisible = -300;
 
           if (elementTop < windowHeight - elementVisible) {
             element.classList.add('active');

@@ -2,7 +2,6 @@ import { useState, useLayoutEffect, useEffect } from 'react';
 import ParticleBg from './ParticleBg';
 import Loading from './LoadingScreen';
 import Logo from './Logo';
-import Favicon from './favicon';
 
 function WelcomePage({ apiUrl }) {
   const [homeFields, setHomeFields] = useState([]);
@@ -11,12 +10,7 @@ function WelcomePage({ apiUrl }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${apiUrl}pages/21`, {
-        headers: {
-          Authorization:
-            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8',
-        },
-      });
+      const response = await fetch(`${apiUrl}pages/21`);
       if (response.ok) {
         const data = await response.json();
         setHomeFields(data);
@@ -47,7 +41,7 @@ function WelcomePage({ apiUrl }) {
       ) : (
         <section className="welcome m-auto h-screen flex justify-center items-center sticky inset-0 z-10" id="welcome">
           <div>
-            <div className="absolute top-20 right-0 left-0 z-10 max-w-[80vw] max-h-20 m-auto lg:hidden">
+            <div className="absolute top-[5vh] right-0 left-0 z-10 max-w-[80vw] max-h-20 m-auto lg:hidden">
               <Logo />
             </div>
             <ParticleBg />
@@ -67,12 +61,13 @@ function WelcomePage({ apiUrl }) {
                     </div>
 
                     <div className="buttons flex flex-col my-8 gap-4 md:my-12 md:grid-span-2 md:gap-4" id="cta-buttons">
-                      <button className="border-solid p-2 font-bold text-[#0a0a19] bg-white hover:bg-transparent hover:text-white hover:border-white hover:border tablet:w-4/5 md:w-full md:w-[20vw] tablet:m-auto max-w-sm">
-                        <a href="#projects">{item.first_cta}</a>
-                      </button>
-                      <button className=" border-solid text-white border-white border-2 p-2 hover:bg-white hover:text-[#0a0a19] hover:font-bold tablet:w-4/5 md:w-full tablet:m-auto max-w-sm">
-                        <a href="#about">{item.second_cta}</a>
-                      </button>
+                    
+                        <a href="#projects" className='border-solid p-2 font-bold text-[#0a0a19] bg-white hover:bg-transparent hover:text-white hover:border-white hover:border tablet:w-4/5 md:w-[20vw] tablet:m-auto max-w-sm text-center'>
+                          {item.first_cta}
+                        </a>
+
+                        <a href="#about" className='border-solid text-white border-white border-2 p-2 hover:bg-white hover:text-[#0a0a19] hover:font-bold tablet:w-4/5 md:w-full tablet:m-auto max-w-sm text-center'>{item.second_cta}</a>
+                   
                       <div className="flex gap-2 tablet:justify-center md:mr-[4.6rem] md:my-0 md:justify-start">
                         <a href="https://www.linkedin.com/in/taylorchillier/" className="hover:scale-105 group">
                           <svg

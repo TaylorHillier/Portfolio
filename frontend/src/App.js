@@ -8,13 +8,13 @@ import AboutPage from './Components/About';
 import Nav from './Components/Nav';
 import Footer from './Components/Footer';
 import ProjectGallery from './Components/ProjectGallery';
-
+import SkipToContent from './Components/SkipToContent';
 
 const App = () => {
-  const wpApiUrl = 'http://localhost:8888/portfolio/wp-json/wp/v2/';
+  const wpApiUrl = 'https://taylorhillier.com/wordpress/wp-json/wp/v2/';
 
   return (
-    <Router>
+    <Router basename='/'>
       <Fragment>
       <Helmet>
         <title>Taylor Hillier's Portfolio</title>
@@ -25,6 +25,7 @@ const App = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <meta name="theme-color" content="#0a0a19"></meta>
       </Helmet>
+      <SkipToContent/>
           <div className="site-wrapper m-auto flex flex-col" id='top-of-content'>
             <div className="navbar z-50 fixed bottom-0 w-full lg:top-4 lg:bottom-full">
               <Nav />

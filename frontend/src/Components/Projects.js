@@ -8,12 +8,7 @@ function ProjectData({ apiUrl }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${apiUrl}project?_embed`, {
-        headers: {
-          Authorization:
-            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojg4ODgvcG9ydGZvbGlvIiwiaWF0IjoxNzAwMjUwMTAyLCJuYmYiOjE3MDAyNTAxMDIsImV4cCI6MTcwMDg1NDkwMiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.n7YwwJRY-3KJ725uHmouA2_fHj8GBx2LOi16yKtuP_8',
-        },
-      });
+      const response = await fetch(`${apiUrl}project?_embed`);
       if (response.ok) {
         const data = await response.json();
         setProjects(data);
@@ -28,7 +23,6 @@ function ProjectData({ apiUrl }) {
   const TabContent = ({ project }) => {
     const [activeTab, setActiveTab] = useState('summary');
     const [showFullSummary, setShowFullSummary] = useState(false);
-    const summaryRef = useRef(null);
 
     const toggleSummary = () => {
       setShowFullSummary(!showFullSummary);
@@ -78,7 +72,7 @@ function ProjectData({ apiUrl }) {
               </div>
             ) : (
               <div className="backdrop-brightness-90 p-4 shadow-lg shadow-slate-400 md:flex md:flex-col md:justify-between md:min-h-[30vh]">
-                <PlainTextToHTML plainText={project.acf.project_summary.substring(0, 250) + '....'} />
+                <PlainTextToHTML plainText={project.acf.project_summary.substring(0, 350) + '....'} />
                 <button
                   onClick={toggleSummary}
                   className="flex text-sm mx-auto border-solid border p-2 mt-4 bg-white text-[#151d1f] font-bold hover:scale-105"
@@ -104,7 +98,7 @@ function ProjectData({ apiUrl }) {
       {isLoaded && (
         <section className="relative projects z-10 bg-gradient-to-t pt-[10vw] from-[#0a0a19] via-[#151d1f] to-[#70828F] p-4 md:p-[5vw] md:pt-[10vw] md:mb-0 " id="projects">
           <h1 className="border-solid border max-w-fit p-2 m-auto lg:mx-4 font-thin shine">PROJECTS</h1>
-          <h2 className="text-4xl mt-[10vh] lg:mx-4 reveal fade-bottom mx-auto text-center">Explore the work I've done (so far).</h2>
+          <h2 className="text-4xl mt-[10vh] lg:mx-4 reveal fade-bottom mx-auto text-center lg:text-left">Explore the work I've done (so far).</h2>
           <div className="projectArticles md:grid md:grid-cols-2 md:gap-[5vw] mt-[10vh]">
             {projects.map((project) => (
               <article key={project.id} className="my-16 reveal fade-bottom md:m-auto md:items-top md:my-0" id={project.slug}>

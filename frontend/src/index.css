@@ -5,6 +5,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    overscroll-behavior-y: contain;
     @apply text-gray-300;
   }
   
@@ -164,4 +166,14 @@ canvas{
 .logo {
   max-width: 80vw;
   max-height: 3rem;
+}
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -1;
 }

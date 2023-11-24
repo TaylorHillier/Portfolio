@@ -4,7 +4,7 @@ import React from 'react';
 const Logo = () => {
   return (
 <div className='logo'>
-    <svg version="1.1" viewBox="0 0 506 85" xmlns="http://www.w3.org/2000/svg" width="80vw" height="5rem">
+    <svg version="1.1" viewBox="0 0 506 85" xmlns="http://www.w3.org/2000/svg" width="80vw" height="3rem">
     <text x="1.4426216" y="42.557373" fill="#ffffff" font-family="'Microsoft Sans Serif'" font-size="53.333px" letter-spacing=".33px" ><tspan x="1.4426216" y="42.557373" fill="#ffffff" font-family="'Microsoft Sans Serif'" letter-spacing=".33px">TAYLOR HILLIER</tspan></text>
     <text x="8.6557341" y="71.409843" fill="#000000" font-size="24px" letter-spacing="1.81px" word-spacing="0px"  ><tspan x="8.6557341" y="71.409843" fill="#ffffff" font-family="'Microsoft Sans Serif'" font-size="24px" letter-spacing="1.81px" word-spacing="0px" >front-end developer</tspan></text>
     <path d="m468.09 51.967c0.14057-0.48216 3.4253-7.0833 3.4253-7.0833h9.4856l2.9642 7.2044z" fill="#fff" stroke-width=".99051"/>
