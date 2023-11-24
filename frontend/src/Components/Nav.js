@@ -24,7 +24,8 @@ function Nav() {
     <nav
       className={`text-white min-h-20 lg:flex lg:flex-row-reverse lg:justify-around lg:max-w-[80vw] lg:m-auto lg:justify-items-center lg:p-2 lg:rounded-full lg:items-center ${
         isScrolled ? 'bg-[#70828F] lg:bg-[#0a0a19] lg:border-[#0a0a19] lg:border-2 transition duration-300 ease-in-out opacity-95' : 'bg-transparent'
-      } ${isGalleryPage ? 'hidden' : ''}`}
+      } ${isGalleryPage ? 'hidden' : ''}`} 
+      id='top-nav'
     >
       <ul className='md:flex md:justify-evenly text-white grid grid-cols-3 justify-items-center'>
         <NavItem to="/#about" icon="about" label="About" />
