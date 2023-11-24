@@ -36,7 +36,7 @@ const ProjectGallery = ({ apiUrl }) => {
   }
 
   return (
-    <section className=' h-screen max-w-lg'>
+    <section className=' h-screen'>
       {project.map((project) => (
         <article key={project.id} className='py-40 max-w-7xl lg:m-auto p-8'>
           <Link to={`/#${projectSlug}`} className='ml-4 text-white link-with-arrow'>

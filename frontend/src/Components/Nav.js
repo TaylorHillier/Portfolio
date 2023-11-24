@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import LogoLarge from './LogoLargeScreen';
-
+import { useLocation } from 'react-router-dom';
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -15,6 +15,10 @@ function Nav() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const location = useLocation();
+
+  const isGalleryPage = location.pathname.startsWith('/project/');
 
   return (
     <nav
