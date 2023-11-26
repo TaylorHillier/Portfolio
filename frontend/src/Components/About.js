@@ -92,6 +92,7 @@ function AboutPage({ apiUrl }) {
                           <img
                             src={skill.skill_group.skill_image}
                             alt={skill.skill_group.skill_label || `Skill ${index + 1}`}
+                            loading='lazy'
                           />
                         )}
                       </li>
