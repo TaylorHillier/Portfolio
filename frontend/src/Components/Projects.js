@@ -61,7 +61,7 @@ function ProjectData({ apiUrl }) {
         <div className="tab-content-container md:w-[40vw]">
           <div className={`tab-content ${activeTab === 'summary' ? 'active' : ''}`}>
             {showFullSummary ? (
-              <div className="backdrop-brightness-90 p-4 shadow-lg shadow-slate-400">
+              <div className="backdrop-brightness-90 p-4 shadow-lg md:shadow-slate-400">
                 <PlainTextToHTML plainText={project.acf.project_summary} />
                 <button
                   onClick={toggleSummary}
@@ -71,7 +71,7 @@ function ProjectData({ apiUrl }) {
                 </button>
               </div>
             ) : (
-              <div className="backdrop-brightness-90 p-4 shadow-lg shadow-slate-400 md:flex md:flex-col md:justify-between md:min-h-[30vh]">
+              <div className="backdrop-brightness-90 p-4 shadow-lg md:shadow-slate-400 md:flex md:flex-col md:justify-between md:min-h-[30vh]">
                 <PlainTextToHTML plainText={project.acf.project_summary.substring(0, 350) + '....'} />
                 <button
                   onClick={toggleSummary}

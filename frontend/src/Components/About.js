@@ -60,7 +60,7 @@ function AboutPage({ apiUrl }) {
               height="100%"
               className="max-w-full object-cover object-center max-h-screen"
             />
-            <div className="about p-4  reveal fade-bottom md:px-[5vh] h-full max-h-screen" id="about">
+            <div className="about p-4  reveal fade-bottom md:px-[5vh] h-full " id="about">
               <h1 className="border-solid border border-gray-400 max-w-fit p-2 my-8 shine">ABOUT</h1>
               <div id="aboutKeywordAnimation" className="h-8 lg:text-3xl lg:my-16" aria-live="polite">
                 <TypeAnimation
