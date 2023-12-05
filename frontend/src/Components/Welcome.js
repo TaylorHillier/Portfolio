@@ -44,7 +44,7 @@ function WelcomePage({ apiUrl }) {
             <div className="absolute top-[5vh] right-0 left-0 z-10 max-w-[80vw] max-h-20 m-auto lg:hidden">
               <Logo />
             </div>
-            <div className="welcomeContent w-[80vw] mt-0 m-auto md:mx-auto tablet:backdrop-brightness-90 shadow-lg shadow-slate-400 shine">
+            <div className="welcomeContent w-[80vw] mt-0 m-auto md:mx-auto tablet:backdrop-brightness-90  ">
               <div className="welcome-content-container tablet:p-4 tablet:text-center md:text-left">
                 {homeFields.acf?.home_page_repeater?.map((item, index) => (
                   <div key={index} className="md:grid md:grid-cols-6 md:grid-rows-1 md:justify-items-center lg:text-l">

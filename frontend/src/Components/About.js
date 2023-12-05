@@ -50,7 +50,7 @@ function AboutPage({ apiUrl }) {
   return (
     <>
         {isLoaded && (
-        <section className="relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828F] text-white w-full min-h-screen " id='about-container'>
+        <section className="relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828f] md:from-[#0a0a19] md:via-[#151d1f] md:to-[#70828F] text-white w-full min-h-screen " id='about-container'>
           <div className="md:grid md:grid-cols-2 md:min-w-full md:items-center max-h-full">
             <img
               src={aboutFields.acf && aboutFields.acf.portrait}
