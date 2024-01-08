@@ -14,7 +14,7 @@ function Footer() {
           Projects
         </a>
         <div className="flex gap-4 flex-col border-t border-slate-700 w-full items-center p-4" id="contact">
-          <h1 className="font-bold">Reach out below!</h1>
+          <h1 className="font-bold text-center">Reach out below!</h1>
           <div className="flex gap-4">
             <a
               href="https://www.linkedin.com/in/taylorchillier/"
@@ -38,7 +38,7 @@ function Footer() {
           </div>
         </div>
       </nav>
-      <p className="text-xs">&copy; 2023 Taylor Hillier</p>
+      <p className="text-xs">&copy; 2023 Taylor Hillier | Icons by <a href='https://icons8.com/'>Icons8</a></p>
     </footer>
   );
 }

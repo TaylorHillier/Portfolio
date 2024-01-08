@@ -1,5 +1,4 @@
 import { useState, useLayoutEffect, useEffect } from 'react';
-import ParticleBg from './ParticleBg';
 import Loading from './LoadingScreen';
 import Logo from './Logo';
 
@@ -57,13 +56,13 @@ function WelcomePage({ apiUrl }) {
                       <div className="w-full bg-gradient-to-b from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30"></div>
                     </div>
 
-                    <div className="buttons flex flex-col my-8 gap-4 md:my-12 md:grid-span-2 md:gap-4" id="cta-buttons">
+                    <div className="buttons flex flex-col my-8 gap-4 md:my-12 md:grid-span-2 md:gap-4 .revealing-object-middle" id="cta-buttons">
                       <div className='content-ctas group flex w-full justify-center'>
-                        <a href="#projects" className='revealing-object border-solid px-4 py-2 font-bold text-[#0a0a19] bg-white group-hover:bg-transparent group-hover:text-white   tablet:w-4/5 md:w-[20vw] tablet:m-auto max-w-sm text-center' aria-label='link to projects'>
+                        <a href="#projects" className='revealing-object border-solid px-4 py-2 font-bold text-[#0a0a19] bg-white group-hover:bg-transparent group-hover:text-white   tablet:w-4/5 md:w-[20vw] w-1/2 tablet:m-auto text-center' aria-label='link to projects'>
                           {item.first_cta}
                         </a>
 
-                        <a href="#about" className='revealing-object border-solid text-white  px-4 py-2 group-hover:bg-white group-hover:text-[#0a0a19] group-hover:font-bold tablet:w-4/5 md:w-full tablet:m-auto max-w-sm text-center' aria-label='link to about me section'>{item.second_cta}</a>
+                        <a href="#about" className='revealing-object w-1/2 border-solid text-white  px-4 py-2 group-hover:bg-white group-hover:text-[#0a0a19] group-hover:font-bold tablet:w-4/5 md:w-full tablet:m-auto text-center border border-white' aria-label='link to about me section'>{item.second_cta}</a>
                       </div>
                       <div className="flex gap-2 justify-center md:mr-[4.6rem] md:my-0 ">
                         <a href="https://www.linkedin.com/in/taylorchillier/"  aria-label="link to linkedin">

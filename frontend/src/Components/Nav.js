@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import LogoLarge from './LogoLargeScreen';
 import { useLocation } from 'react-router-dom';
+import { Link, animateScroll as scroll } from 'react-scroll';
+
+
 function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -24,41 +27,56 @@ function Nav() {
     <nav
       className={`text-white min-h-20 lg:flex lg:flex-row-reverse lg:justify-around lg:max-w-[80vw] lg:m-auto lg:justify-items-center lg:p-2 lg:rounded-full lg:items-center ${
         isScrolled ? 'bg-[#70828F] lg:bg-[#0a0a19] lg:border-[#0a0a19] lg:border-2 transition duration-300 ease-in-out opacity-95' : 'bg-transparent'
-      } ${isGalleryPage ? 'hidden' : ''}`} 
+      } ${isGalleryPage ? 'hidden' : ''}`}
       id='top-nav'
     >
       <ul className='md:flex md:justify-evenly text-white grid grid-cols-4 justify-items-center'>
-        <NavItem to="/#top-of-content" icon="home" label="Home" />
-        <NavItem to="/#about" icon="about" label="About" />
-        <NavItem to="/#projects" icon="projects" label="Projects" />
-        <NavItem to="/#contact" icon="contact" label="Contact" />
+     
+        <NavItem to="top-of-content" icon="home" label="Home" />
+        <NavItem to="about" icon="about" label="About" />
+        <NavItem to="projects" icon="projects" label="Projects" />
+        <NavItem to="contact" icon="contact" label="Contact" />
       </ul>
-      <a href='#top-of-content' className='hidden lg:block'>
+      <Link to="top-of-content" smooth={true} duration={500} className='hidden lg:block'>
         <LogoLarge />
-      </a>
+      </Link>
     </nav>
   );
 }
 
 function NavItem({ to, icon, label }) {
-  if(to !== '/#top-of-content') {
+  if (to !== '/#top-of-content') {
     return (
       <li className='p-4 text-sm font-thin w-full hover:scale-110 lg:hover:scale-100 hover:bg-[#0a0a19] lg:hover:bg-transparent'>
-        <a href={to} className='flex-col flex items-center justify-items-center scroll-to lg:hover:font-bold lg:hover:scale-110'  aria-label={label}>
+        <Link
+          to={to}
+          spy={true}
+          smooth={true}
+          duration={200}
+          className='flex-col flex items-center justify-items-center scroll-to lg:hover:font-bold lg:hover:scale-110 cursor-pointer'
+          aria-label={label}
+        >
           {renderIcon(icon)}
           {label}
-        </a>
+        </Link>
       </li>
     );
   } else {
-  return (
-    <li className='p-4 text-sm font-thin w-full hover:scale-110 lg:hover:scale-100 hover:bg-[#0a0a19] lg:hover:bg-transparent'>
-      <a href={to} className='flex-col flex items-center justify-items-center scroll-to lg:hover:font-bold lg:hover:scale-110 lg:hidden'  aria-label={label}>
-        {renderIcon(icon)}
-        {label}
-      </a>
-    </li>
-  );
+    return (
+      <li className='p-4 text-sm font-thin w-full hover:scale-110 lg:hover:scale-100 hover:bg-[#0a0a19] lg:hover:bg-transparent'>
+        <Link
+          to={to}
+          spy={true}
+          smooth={true}
+          duration={500}
+          className='flex-col flex items-center justify-items-center scroll-to lg:hover:font-bold lg:hover:scale-110 lg:hidden cursor-pointer'
+          aria-label={label}
+        >
+          {renderIcon(icon)}
+          {label}
+        </Link>
+      </li>
+    );
   }
 }
 
@@ -66,7 +84,7 @@ function renderIcon(icon) {
   switch (icon) {
     case 'home':
       return(
-        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="white" clip-rule="evenodd"><path d="M22 11.414v12.586h-20v-12.586l-1.293 1.293-.707-.707 12-12 12 12-.707.707-1.293-1.293zm-6 11.586h5v-12.586l-9-9-9 9v12.586h5v-9h8v9zm-1-7.889h-6v7.778h6v-7.778z"/></svg>
+        <svg width="24" className='lg:hidden' height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="white" clip-rule="evenodd"><path d="M22 11.414v12.586h-20v-12.586l-1.293 1.293-.707-.707 12-12 12 12-.707.707-1.293-1.293zm-6 11.586h5v-12.586l-9-9-9 9v12.586h5v-9h8v9zm-1-7.889h-6v7.778h6v-7.778z"/></svg>
       );
     case 'about':
       return (
