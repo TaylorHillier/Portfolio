@@ -27,7 +27,7 @@ function Nav() {
     <nav
       className={`text-white min-h-20 md:flex md:flex-row-reverse md:justify-around md:max-w-[80vw] md:m-auto md:justify-items-center md:p-2 md:rounded-full md:items-center ${
         isScrolled ? 'bg-[#70828F] md:bg-[#0a0a19] md:border-[#0a0a19] md:border-2 transition duration-300 ease-in-out opacity-95' : 'bg-transparent'
-      } ${isGalleryPage ? 'hidden' : ''}`}
+      } ${isGalleryPage ? 'hidden lg:hidden md:hidden tablet:hidden' : ''}`}
       id='top-nav'
     >
       <ul className='md:flex md:justify-evenly text-white grid grid-cols-4 justify-items-center'>
