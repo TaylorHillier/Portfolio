@@ -50,19 +50,19 @@ function AboutPage({ apiUrl }) {
   return (
     <>
         {isLoaded && (
-        <section className="relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828f] md:from-[#0a0a19] md:via-[#151d1f] md:to-[#70828F] text-white w-full min-h-screen " id='about-container'>
-          <div className="md:grid md:grid-cols-3 md:items-center max-h-full m-auto md:grid-rows-2 md:px-8">
+        <section className="mt-16 relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828f] tablet:from-[#0a0a19] tablet:via-[#151d1f] tablet:to-[#70828F] text-white w-full" id="about">
+          <div className="tablet:grid md:grid-cols-3 tablet:items-center max-h-full mt-24 m-auto md:p-8 tablet:grid-rows-2 md:grid-rows-2 tablet:px-8 md:max-w-[100rem]">
             <img
               src={aboutFields.acf && aboutFields.acf.portrait}
               loading="lazy"
               alt="Photo of myself - Taylor Hillier"
               width="768px"
               height="100%"
-              className="max-w-full object-cover object-center max-h-screen md:col-start-1"
+              className="max-w-full tablet:hidden md:block md:max-h-[50vh] object-cover object-center md:object-contain md:col-start-1"
             />
-            <div className="about p-4 md:p-0 reveal fade-bottom md:px-4 h-full md:col-span-2 md:col-start-2" id="about">
-              <h1 className="border-solid border border-gray-400 max-w-fit p-2 my-8 shine">ABOUT</h1>
-              <div id="aboutKeywordAnimation" className="h-8 lg:text-3xl lg:my-16" aria-live="polite">
+            <div className="about p-4 tablet:p-0 reveal fade-bottom tablet:px-4 tablet:col-span-3 md:col-span-2 md:col-start-2 tablet:col-start-1 tablet:row-start-1 md:row-start-1" id="about-content">
+              <h1 className="border-solid border border-gray-400 max-w-fit p-2 shine bg-[#70828f]">ABOUT</h1>
+              <div id="aboutKeywordAnimation" className="h-8 lg:text-3xl lg:my-12" aria-live="polite">
                 <TypeAnimation
                   sequence={[
                     keywords[0],
@@ -78,12 +78,12 @@ function AboutPage({ apiUrl }) {
                   repeat={Infinity}
                 />
               </div>
-              <div className="aboutParagraph my-8 reveal fade-bottom">
+              <div className="aboutParagraph my-8 reveal fade-bottom md:text-lg md:mr-8 ">
                 <PlainTextToHTML plainText={aboutFields.acf && aboutFields.acf.about_me_paragraph} />
               </div>
             </div>
-            <div className="aboutMeSkills py-4 md:py-0 md:row-start-2 md:col-span-3 p-4 ">
-                <p className="font-bold reveal fade-bottom">Some skills I have developed:</p>
+            <div className="aboutMeSkills py-4 md:py-0 tablet:row-start-2 md:row-start-2 tablet:col-span-3 p-4 ">
+                <p className="font-bold reveal fade-bottom md:text-2xl">Some skills I have developed:</p>
                 <ul className="skills rounded shadow-lg shadow-gray-400 p-2 mt-4 grid grid-cols-4 lg:justify-items-start justify-items-center reveal fade-bottom">
                   {aboutFields.acf &&
                     aboutFields.acf.skill_repeater &&

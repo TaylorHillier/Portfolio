@@ -27,7 +27,7 @@ const App = () => {
       </Helmet>
       <SkipToContent/>
           <div className="site-wrapper m-auto flex flex-col" id='top-of-content'>
-            <div className="navbar z-50 fixed bottom-0 w-full lg:top-4 lg:bottom-full">
+            <div className="navbar z-50 fixed bottom-0 w-full md:top-4 md:bottom-full">
               <Nav />
             </div>
             <div className="content">

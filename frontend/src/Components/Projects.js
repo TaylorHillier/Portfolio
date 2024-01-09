@@ -112,8 +112,10 @@ function ProjectData({ apiUrl }) {
       {isLoaded && (
         <section className="relative projects z-10 bg-gradient-to-t pt-[10vw] from-[#0a0a19] via-[#151d1f] to-[#70828F] p-4 md:p-[5vw] md:pt-[10vw] md:mb-0" id="projects">
           <div className='projects-content m-auto'>
-            <h1 className="border-solid border max-w-fit p-2 m-auto lg:mx-4 font-thin shine">PROJECTS</h1>
-            <h2 className="text-xl lg:mx-4 reveal fade-bottom mx-auto text-center lg:text-left m-32">{announcement.acf && announcement.acf.announcement}<Link to={`/project/${announcement.acf && announcement.acf.href_for_link}`} className='text-[#0a0a19] hover:text-white hover:scale-110'>{announcement.acf && announcement.acf.project_link}</Link>{announcement.acf && announcement.acf.announcement_2}</h2>
+            <div className=' m-auto max-w-[70vw]'>
+              <h1 className="border-solid border max-w-fit p-2 m-auto font-thin shine ">PROJECTS</h1>
+              <h2 className="text-xl reveal fade-bottom mx-auto text-center lg:text-left m-32">{announcement.acf && announcement.acf.announcement}<Link to={`/project/${announcement.acf && announcement.acf.href_for_link}`} className='text-[#0a0a19] hover:text-white hover:scale-110'>{announcement.acf && announcement.acf.project_link}</Link>{announcement.acf && announcement.acf.announcement_2}</h2>
+            </div>
             <div className="projectArticles md:grid md:grid-cols-2 md:gap-[5vw] mt-[10vh]">
               {projects.map((project) => (
                 <article key={project.id} className="my-16 reveal fade-bottom md:m-auto md:items-top md:my-0" id={project.slug}>
