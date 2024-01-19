@@ -2,6 +2,7 @@ import React from 'react';
 import Loading from './LoadingScreen';
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import EmbeddedApp from './EmbeddedApp';
 
 const ProjectGallery = ({ apiUrl }) => {
   // Render the detailed view of the selected project
@@ -38,7 +39,7 @@ const ProjectGallery = ({ apiUrl }) => {
   return (
     <section className='projectGalleryPiece'>
       {project.map((project) => (
-        <article key={project.id} className='lg:py-40 max-w-7xl lg:m-auto p-8 mt-24'>
+        <article key={project.id} className='max-w-7xl lg:py-20 lg:m-auto p-0 tablet:p-8'>
           <Link to={`/#${projectSlug}`} className='ml-4 text-white link-with-arrow'>
             Back to Home
           </Link>
@@ -48,6 +49,10 @@ const ProjectGallery = ({ apiUrl }) => {
                 <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
             </div>
             <p className='m-4'>{project.acf.project_gallery_summary}</p>
+            {projectSlug === "science-scramble" && (
+          <EmbeddedApp />
+          )}
+        
           </div>
           <div className=''>
             {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
@@ -59,6 +64,7 @@ const ProjectGallery = ({ apiUrl }) => {
               />
             )}
              <div className="absolute top-0 left-0 w-full h-full bg-[#0a0a19] opacity-50 -z-50"></div>
+             
           </div>
         </article>
       ))}
