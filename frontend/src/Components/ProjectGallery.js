@@ -77,6 +77,7 @@ const ProjectGallery = ({ apiUrl }) => {
                 loading='eager'
                 autoPlay
                 controls
+                muted
               />
               )
             }
