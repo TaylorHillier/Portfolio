@@ -226,3 +226,11 @@ canvas{
   border-color: white;
   border-width: 1px;
 }
+
+video::-webkit-media-controls-volume-slider {
+  display:none;
+  }
+  
+  video::-webkit-media-controls-mute-button {
+  display:none;
+  }
