@@ -37,13 +37,13 @@ const ProjectGallery = ({ apiUrl }) => {
   return (
     <main className='projectGalleryPiece '>
       {project.map((project) => (
-        <article key={project.id} className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#70828F] h-screen'>
+        <article key={project.id} className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#70828F] h-full'>
           <div className='max-w-5xl lg:py-20 lg:m-auto p-4 tablet:p-8 '>
             <Link to={`/#${projectSlug}`} className='ml-4 text-white link-with-arrow'>
               Back to Home
             </Link>
             <div id='summary-content z-50'>
-              <h2 className='font-bold text-3xl m-4'>{project.title.rendered}</h2>
+              <h2 className='font-bold text-3xl mx-auto my-4'>{project.title.rendered}</h2>
               <div className='h-px w-full bg-gradient-to-r from-transparent via-white to-transparent'>
                 <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
               </div>
