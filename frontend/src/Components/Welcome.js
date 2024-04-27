@@ -39,24 +39,24 @@ function WelcomePage({ apiUrl }) {
         <Loading />
       ) : (
         <section className="welcome m-auto h-screen flex justify-center items-center sticky inset-0 z-10 bg-[#0a0a19]" id="welcome">
-          <div>
+          <div className='max-w-[75rem]'>
             <div className="absolute top-[5vh] right-0 left-0 z-10 max-w-[80vw] max-h-20 m-auto md:hidden">
               <Logo />
             </div>
-            <div className="welcomeContent w-[80vw] mt-0 m-auto md:mx-auto ">
-              <div className="welcome-content-container tablet:p-4 text-center ">
+            <div className="welcomeContent  mt-0 m-auto md:mx-auto ">
+              <div className="welcome-content-container tablet:p-4 text-center m-auto">
                 {homeFields.acf?.home_page_repeater?.map((item, index) => (
-                  <div key={index} className="md:grid md:grid-cols-8 md:grid-rows-1 md:justify-items-end lg:text-l">
+                  <div key={index} className="md:grid md:grid-cols-9 md:grid-rows-1  md:justify-items-center lg:text-l">
 
-                    <div className="welcomeText md:col-span-3 md:col-start-1 md:justify-self-end md:self-center m-4">
+                    <div className="welcomeText md:col-span-4   md:self-center m-4">
                      <p className='lg:text-lg'>{item.text_area_1}</p>
                     </div>
 
-                    <div className="hidden w-px bg-gradient-to-b from-transparent via-white to-transparent md:block md:col-span-1 md:col-start-5 justify-self-start">
+                    <div className="hidden w-px bg-gradient-to-b from-transparent via-white to-transparent md:block  ">
                       <div className="w-full bg-gradient-to-b from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30"></div>
                     </div>
 
-                    <div className="buttons flex flex-col my-8 w-full gap-4 md:my-12 md:col-span-3 md:col-start md:gap-4 .revealing-object-middle" id="cta-buttons">
+                    <div className="buttons flex flex-col my-8 w-full gap-4 md:my-12 md:col-span-4 md:gap-4 .revealing-object-middle" id="cta-buttons">
                       <div className='content-ctas group flex  justify-center'>
                         <a href="#projects" className='revealing-object border-solid px-4 py-2 font-bold text-[#0a0a19] bg-white group-hover:bg-transparent group-hover:text-white   tablet:w-4/5 text-center' aria-label='link to projects'>
                           {item.first_cta}

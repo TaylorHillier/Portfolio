@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function ProjectData({ apiUrl }) {
   const [projects, setProjects] = useState([]);
   const [isLoaded, setLoadStatus] = useState(false);
-  const [announcement, setAnnouncement]  = useState([]);
+  const [announcement, setAnnouncement]  = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${apiUrl}project?_embed`);
@@ -21,17 +21,14 @@ function ProjectData({ apiUrl }) {
   }, [apiUrl]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAnnouncement = async () => {
       const response = await fetch(`${apiUrl}pages/161`);
       if (response.ok) {
         const data = await response.json();
         setAnnouncement(data);
-        setLoadStatus(true);
-      } else {
-        setLoadStatus(false);
-      }
+      } 
     };
-    fetchData();
+    fetchAnnouncement();
   }, [apiUrl]);
 
   const TabContent = ({ project }) => {
@@ -72,29 +69,14 @@ function ProjectData({ apiUrl }) {
           </div>
         </div>
 
-        <div className="tab-content-container md:w-[40vw]">
+        <div className="tab-content-container ">
           <div className={`tab-content ${activeTab === 'summary' ? 'active' : ''}`}>
-            {showFullSummary ? (
+         
               <div className="backdrop-brightness-90 p-4 shadow-lg md:shadow-slate-400">
                 <PlainTextToHTML plainText={project.acf.project_summary} />
-                <button
-                  onClick={toggleSummary}
-                  className="flex text-sm m-auto border-solid border p-2 mt-4 bg-white text-[#151d1f] font-bold hover:scale-105"
-                >
-                  Read Less
-                </button>
+               
               </div>
-            ) : (
-              <div className="backdrop-brightness-90 p-4 shadow-lg md:shadow-slate-400 md:flex md:flex-col md:justify-between md:min-h-[30vh]">
-                <PlainTextToHTML plainText={project.acf.project_summary.substring(0, 350) + '....'} />
-                <button
-                  onClick={toggleSummary}
-                  className="flex text-sm mx-auto border-solid border p-2 mt-4 bg-white text-[#151d1f] font-bold hover:scale-105"
-                >
-                  Read More
-                </button>
-              </div>
-            )}
+           
           </div>
 
           <p className={`tab-content ${activeTab === 'skills' ? 'active' : ''} p-8 backdrop-brightness-90 shadow-lg shadow-slate-400`}>
@@ -111,14 +93,23 @@ function ProjectData({ apiUrl }) {
     <>
       {isLoaded && (
         <section className="relative projects z-10 bg-gradient-to-t pt-[10vw] from-[#0a0a19] via-[#151d1f] to-[#70828F] p-4 md:p-[5vw] md:pt-[10vw] md:mb-0" id="projects">
-          <div className='projects-content m-auto'>
+          <div className='projects-content m-auto max-w-[75rem]'>
             <div className=' m-auto max-w-[70vw]'>
               <h1 className="border-solid border max-w-fit p-2 m-auto font-thin shine ">PROJECTS</h1>
-              <h2 className="text-xl reveal fade-bottom mx-auto text-center lg:text-left m-32">{announcement.acf && announcement.acf.announcement}<Link to={`/project/${announcement.acf && announcement.acf.href_for_link}`} className='text-[#0a0a19] hover:text-white hover:scale-110'>{announcement.acf && announcement.acf.project_link}</Link>{announcement.acf && announcement.acf.announcement_2}</h2>
+              {announcement && (
+              <h2 className="text-xl reveal fade-bottom mx-auto text-center lg:text-left m-32">
+                {announcement.acf && announcement.acf.announcement}
+                {announcement.acf && announcement.acf.project_link && (
+                  <Link to={`/project/${announcement.acf.href_for_link}`} className='text-[#0a0a19] hover:text-white hover:scale-110'>
+                    {announcement.acf.project_link}
+                  </Link>
+                )}
+                {announcement.acf && announcement.acf.announcement_2}
+              </h2>)}
             </div>
-            <div className="projectArticles md:grid md:grid-cols-2 md:gap-[5vw] mt-[10vh]">
+            <div className="projectArticles md:grid xl:grid-cols-2 md:gap-[5rem] mt-[10vh]">
               {projects.map((project) => (
-                <article key={project.id} className="my-16 reveal fade-bottom md:m-auto md:items-top md:my-0" id={project.slug}>
+                <article key={project.id} className="my-16 reveal fade-bottom  md:items-top md:my-0" id={project.slug}>
                   <h2 className="font-bold text-3xl mb-4 md:min-h-[8vh]">{project.title.rendered}</h2>
                   <div className="flex items-center gap-4 my-4">
                     {project.acf.github_link !== "" && (
