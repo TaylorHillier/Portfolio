@@ -110,7 +110,7 @@ function ProjectData({ apiUrl }) {
             <div className="projectArticles md:grid xl:grid-cols-2 md:gap-[5rem] mt-[10vh]">
               {projects.map((project) => (
                 <article key={project.id} className="my-16 reveal fade-bottom  md:items-top md:my-0" id={project.slug}>
-                  <h2 className="font-bold text-3xl mb-4 md:min-h-[8vh]">{project.title.rendered}</h2>
+                  <h2 className="font-bold text-xl md:text-3xl mb-4 md:min-h-[8vh]">{project.title.rendered}</h2>
                   <div className="flex items-center gap-4 my-4">
                     {project.acf.github_link !== "" && (
                       <a

@@ -33,7 +33,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={
                   <Fragment>
-                    <main>
+                    <main className='w-full'>
                       <WelcomePage apiUrl={wpApiUrl} />
                       <AboutPage apiUrl={wpApiUrl} />
                       <ProjectData apiUrl={wpApiUrl} />

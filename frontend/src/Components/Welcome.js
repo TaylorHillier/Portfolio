@@ -38,7 +38,7 @@ function WelcomePage({ apiUrl }) {
       {!isLoaded ? (
         <Loading />
       ) : (
-        <section className="welcome m-auto h-screen flex justify-center items-center sticky inset-0 z-10 bg-[#0a0a19]" id="welcome">
+        <section className="welcome lg:m-auto h-screen flex justify-center items-center sticky inset-0 z-10 bg-[#0a0a19]" id="welcome">
           <div className='max-w-[75rem]'>
             <div className="absolute top-[5vh] right-0 left-0 z-10 max-w-[80vw] max-h-20 m-auto md:hidden">
               <Logo />

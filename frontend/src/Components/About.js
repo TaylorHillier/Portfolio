@@ -54,9 +54,9 @@ function AboutPage({ apiUrl }) {
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-        <section className="mt-16 relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828f] tablet:from-[#0a0a19] tablet:via-[#151d1f] tablet:to-[#70828F] text-white w-full" id="about">
-          <div className='max-w-[75rem] m-auto'>
-            <div className=" tablet:items-center max-h-full mt-24 m-auto md:p-8  flex flex-col gap-20  tablet:px-8 md:max-w-[75rem] ">
+        <section className=" relative z-10 bg-gradient-to-b from-[#151d1f] via-[#0a0a19] to-[#70828f] tablet:from-[#0a0a19] tablet:via-[#151d1f] tablet:to-[#70828F] text-white w-full" id="about">
+          <div className='max-w-[75rem] m-auto py-8'>
+            <div className=" tablet:items-center max-h-full m-auto md:p-8  flex flex-col gap-12  tablet:px-8 md:max-w-[75rem] ">
               <div className="about p-4 tablet:p-0 reveal fade-bottom tablet:px-4 tablet:col-span-3 md:col-span-2 md:col-start-2 tablet:col-start-1 tablet:row-start-1 md:row-start-1" id="about-content">
                 <h1 className="border-solid border border-gray-400 max-w-fit p-2 shine bg-[#70828f]">ABOUT</h1>
                 <div id="aboutKeywordAnimation" className="h-8 lg:text-3xl lg:my-12" aria-live="polite">
