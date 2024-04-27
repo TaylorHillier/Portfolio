@@ -35,10 +35,10 @@ const ProjectGallery = ({ apiUrl }) => {
   }
 
   return (
-    <main className='projectGalleryPiece'>
+    <main className='projectGalleryPiece '>
       {project.map((project) => (
-        <article key={project.id}>
-          <div className='max-w-5xl lg:py-20 lg:m-auto p-4 tablet:p-8 h-screen'>
+        <article key={project.id} className='bg-gradient-to-b from-[#0a0a19] via-[#151d1f] to-[#70828F] h-screen'>
+          <div className='max-w-5xl lg:py-20 lg:m-auto p-4 tablet:p-8 '>
             <Link to={`/#${projectSlug}`} className='ml-4 text-white link-with-arrow'>
               Back to Home
             </Link>
@@ -72,7 +72,7 @@ const ProjectGallery = ({ apiUrl }) => {
               </section>
               {projectSlug === "science-scramble" && <EmbeddedApp />}
             </div>
-            <div>
+            {/* <div>
               {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
                 <img
                   src={project._embedded['wp:featuredmedia'][0].source_url}
@@ -84,7 +84,7 @@ const ProjectGallery = ({ apiUrl }) => {
               <div className="absolute top-0 left-0 w-full h-full bg-[#0a0a19] opacity-50 -z-40"></div>
               
               
-            </div>
+            </div> */}
           </div>
         </article>
       ))}
