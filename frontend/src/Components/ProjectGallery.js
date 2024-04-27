@@ -35,7 +35,7 @@ const ProjectGallery = ({ apiUrl }) => {
   }
 
   return (
-    <section className='projectGalleryPiece'>
+    <main className='projectGalleryPiece'>
       {project.map((project) => (
         <article key={project.id}>
           <div className='max-w-5xl lg:py-20 lg:m-auto p-4 tablet:p-8 h-screen'>
@@ -47,27 +47,29 @@ const ProjectGallery = ({ apiUrl }) => {
               <div className='h-px w-full bg-gradient-to-r from-transparent via-white to-transparent'>
                 <div className='h-full bg-gradient-to-r from-neutrals-100/30 via-neutrals-100 to-neutrals-100/30'></div>
               </div>
-              <p className='m-4'>{project.acf.project_gallery_summary}</p>
-              {project._embedded?.['acf:attachment']?.map((attachment) => (
-                attachment.media_type === "image" ? (
-                  <img
-                    src={attachment.source_url}
-                    alt={attachment.alt_text || 'Gallery Image'}
-                    className=' z-30 '
-                    loading='eager'
-                  />
-                ) : (
-                  <video
-                    src={attachment.source_url}
-                    alt={attachment.title.rendered || 'Gallery Video'}
-                    className='w-4/5 md:w-3/5 m-auto max-h-screen'
-                    loading='eager'
-                    autoPlay
-                    controls
-                    muted
-                  />
-                )
-              ))}
+              <div className='m-4' dangerouslySetInnerHTML={{ __html: project.acf.project_gallery_summary }} />
+              <section id='gallery'>
+                {project._embedded?.['acf:attachment']?.map((attachment) => (
+                  attachment.media_type === "image" ? (
+                    <img
+                      src={attachment.source_url}
+                      alt={attachment.alt_text || 'Gallery Image'}
+                      className=' z-30 m-auto w-4/5 md:w-3/5'
+                      loading='eager'
+                    />
+                  ) : (
+                    <video
+                      src={attachment.source_url}
+                      alt={attachment.title.rendered || 'Gallery Video'}
+                      className='w-4/5 md:w-3/5 m-auto max-h-screen'
+                      loading='eager'
+                      autoPlay
+                      controls
+                      muted
+                    />
+                  )
+                ))}
+              </section>
               {projectSlug === "science-scramble" && <EmbeddedApp />}
             </div>
             <div>
@@ -86,7 +88,7 @@ const ProjectGallery = ({ apiUrl }) => {
           </div>
         </article>
       ))}
-    </section>
+    </main>
   );
 };
 

@@ -27,23 +27,23 @@ const App = () => {
       </Helmet>
       <SkipToContent/>
           <div className="site-wrapper m-auto flex flex-col" id='top-of-content'>
-            <div className="navbar z-50 fixed bottom-0 w-full md:top-4 md:bottom-full">
+            <header className="navbar z-50 fixed bottom-0 w-full md:top-4 md:bottom-full">
               <Nav />
-            </div>
-            <div className="content">
+            </header>
               <Routes>
                 <Route path="/" element={
                   <Fragment>
+                    <main>
                       <WelcomePage apiUrl={wpApiUrl} />
                       <AboutPage apiUrl={wpApiUrl} />
                       <ProjectData apiUrl={wpApiUrl} />
+                    </main>
                       <Footer />
                   </Fragment>
                   }>
                   </Route>
                   <Route path="/project/:projectSlug" element={<ProjectGallery apiUrl={wpApiUrl} />} />
               </Routes>
-            </div>
           </div>
       </Fragment>
     </Router>

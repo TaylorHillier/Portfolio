@@ -37,7 +37,7 @@ function Nav() {
         <NavItem to="projects" icon="projects" label="Projects" />
         <NavItem to="contact" icon="contact" label="Contact" />
       </ul>
-      <Link to="top-of-content" smooth={true} duration={500} className='hidden md:block'>
+      <Link to="top-of-content" smooth={true} duration={500} className='hidden md:block cursor-pointer'>
         <LogoLarge />
       </Link>
     </nav>

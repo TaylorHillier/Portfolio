@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer className="relative z-10 mb-[76px] lg:mb-0 bg-[#0a0a19] p-8 flex flex-col justify-items-center items-center text-[#d1dbd5]" id='footer'>
+    <footer className="relative z-10 lg:mb-0 bg-[#0a0a19] p-8 flex flex-col justify-items-center items-center text-[#d1dbd5]" id='footer'>
       <nav className="flex gap-4 justify-center border-t border-slate-700 m-2 p-4 flex-wrap" id='footer-nav'>
         <a href="#top-of-content" className="hover:scale-105 hover:text-white hover:font-semibold">
           Home
