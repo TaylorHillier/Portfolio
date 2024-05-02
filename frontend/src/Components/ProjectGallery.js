@@ -3,6 +3,7 @@ import Loading from './LoadingScreen';
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import EmbeddedApp from './EmbeddedApp';
+import EmbeddedChart from './EmbeddedChart';
 
 const ProjectGallery = ({ apiUrl }) => {
   const { projectSlug } = useParams();
@@ -71,6 +72,7 @@ const ProjectGallery = ({ apiUrl }) => {
                 ))}
               </section>
               {projectSlug === "science-scramble" && <EmbeddedApp />}
+              {projectSlug === 'simulated-trading-game' && <EmbeddedChart/>}
             </div>
             {/* <div>
               {project._embedded?.['wp:featuredmedia']?.[0]?.source_url && (

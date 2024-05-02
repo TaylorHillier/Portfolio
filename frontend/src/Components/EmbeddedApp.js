@@ -2,7 +2,7 @@ import React from 'react';
 
 const EmbeddedApp = () => {
   return (
-    <div className='mt-20absolute w-full left-0 mt-8'>
+    <div className='mt-20  w-full left-0 '>
       <iframe
         title="Embedded App"
         src="/My%20Game/index.html"  // Update the path to point to your app's HTML file
