@@ -38,7 +38,7 @@ function Footer() {
           </div>
         </div>
       </nav>
-      <p className="text-xs">&copy; 2023 Taylor Hillier | Icons by <a href='https://icons8.com/'>Icons8</a></p>
+      <p className="text-xs">&copy; 2024 Taylor Hillier | Icons by <a href='https://icons8.com/'>Icons8</a></p>
     </footer>
   );
 }

@@ -50,26 +50,29 @@ const ProjectGallery = ({ apiUrl }) => {
               </div>
               <div className='m-4' dangerouslySetInnerHTML={{ __html: project.acf.project_gallery_summary }} />
               <section id='gallery'>
-                {project._embedded?.['acf:attachment']?.map((attachment) => (
-                  attachment.media_type === "image" ? (
-                    <img
-                      src={attachment.source_url}
-                      alt={attachment.alt_text || 'Gallery Image'}
-                      className=' z-30 m-auto w-4/5 md:w-3/5'
-                      loading='eager'
-                    />
-                  ) : (
-                    <video
-                      src={attachment.source_url}
-                      alt={attachment.title.rendered || 'Gallery Video'}
-                      className='w-4/5 md:w-3/5 m-auto max-h-screen'
-                      loading='eager'
-                      autoPlay
-                      controls
-                      muted
-                    />
-                  )
-                ))}
+              <h2 className={`w-full p-4 text-center text-xl font-bold ${(!project._embedded || !project._embedded['acf:attachment'] || project._embedded['acf:attachment'].length === 0) ? 'hidden' : 'block'}`}> Photo Gallery</h2>
+                <div className={`grid ${project._embedded?.['acf:attachment']?.length > 1 ? 'md:grid-cols-2' : ''}`}>
+                  {project._embedded?.['acf:attachment']?.map((attachment) => (
+                    attachment.media_type === "image" ? (
+                      <img
+                        src={attachment.source_url}
+                        alt={attachment.alt_text || 'Gallery Image'}
+                        className='m-auto w-full h-full'
+                        loading='eager'
+                      />
+                    ) : (
+                      <video
+                        src={attachment.source_url}
+                        alt={attachment.title.rendered || 'Gallery Video'}
+                        className='m-auto max-h-screen'
+                        loading='eager'
+                        autoPlay
+                        controls
+                        muted
+                      />
+                    )
+                  ))}
+                </div>
               </section>
               {projectSlug === "science-scramble" && <EmbeddedApp />}
               {projectSlug === 'simulated-trading-game' && <EmbeddedChart/>}
